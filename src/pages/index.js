@@ -294,6 +294,7 @@ export const query = graphql`
         ticketPrice
         performanceDates {
           startTime
+          endTime
         }
         ticketLink
       }

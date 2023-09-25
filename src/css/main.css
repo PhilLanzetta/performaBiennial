@@ -1061,6 +1061,10 @@ HOME
 
 .tile-bottom {
   margin-top: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
 }
 
 @media screen and (max-width: 780px) {
@@ -1098,6 +1102,10 @@ HOME
   .day-column {
     width: 100%;
   }
+
+  .tile-bottom {
+  align-items: stretch;
+}
 }
 
 /*
