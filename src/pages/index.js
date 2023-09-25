@@ -156,7 +156,7 @@ const IndexPage = ({ data, location }) => {
                 }`}
                 onClick={() => handleFilterClick('week', '1')}
               >
-                <span>WEEK 1 (NOV. 01–07)</span>
+                WEEK 1 <span>(NOV. 01–07)</span>
               </button>
               <button
                 className={`filter-button ${
@@ -168,7 +168,7 @@ const IndexPage = ({ data, location }) => {
                 }`}
                 onClick={() => handleFilterClick('week', '2')}
               >
-                <span>WEEK 2 (NOV. 08–14)</span>
+                WEEK 2 <span>(NOV. 08–14)</span>
               </button>
               <button
                 className={`filter-button ${
@@ -180,7 +180,7 @@ const IndexPage = ({ data, location }) => {
                 }`}
                 onClick={() => handleFilterClick('week', '3')}
               >
-                <span>WEEK 3 (NOV. 15–19)</span>
+                WEEK 3 <span>(NOV. 15–19)</span>
               </button>
             </div>
             <div className='event-filter-container'>

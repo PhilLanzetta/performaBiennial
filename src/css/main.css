@@ -1057,6 +1057,29 @@ HOME
   margin-top: var(--spacing-sm);
 }
 
+@media screen and (max-width: 780px) {
+  .filter-container {
+    display: flex;
+    border: none;
+    gap: var(--spacing-sm);
+    align-items: flex-start;
+  }
+
+  .weeks-filter-container,
+  .event-filter-container {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .filter-button {
+    border: 1px solid #000000;
+  }
+
+  .day-column {
+    width: 50%;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .home-hub-locations {
     flex-direction: column;
@@ -1064,6 +1087,10 @@ HOME
 
   .home-hub-locations > div {
     padding-left: 0;
+  }
+
+  .day-column {
+    width: 100%;
   }
 }
 
