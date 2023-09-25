@@ -127,7 +127,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           rel='noreferrer'
           className='secondary-button rounded'
         >
-          {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}{' '}
+          {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}
         </a>
       </div>
     </div>

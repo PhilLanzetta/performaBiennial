@@ -88,7 +88,7 @@ const Performance = ({ data }) => {
                   rel='noreferrer'
                   className='secondary-button rounded mobile-full-width'
                 >
-                  Buy Tickets
+                  {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}
                 </a>
               </div>
             </div>
