@@ -37,7 +37,7 @@ export const query = graphql`
     contentfulFlexPage(slug: { eq: "pavilions" }) {
       content {
         ... on ContentfulHeadlineWithText {
-          id
+          headlineText: id
           columns
           headline
           text {
@@ -47,7 +47,7 @@ export const query = graphql`
           }
         }
         ... on ContentfulImageModule {
-          id
+          imageModule: id
           images {
             caption
             image {
@@ -57,7 +57,7 @@ export const query = graphql`
           }
         }
         ... on ContentfulVideoModule {
-          id
+          videoModule: id
           videoLink
           videoCaption
           coverImage {

@@ -6,6 +6,7 @@ import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
 
 const About = ({data}) => {
+  console.log(data)
   const content = data.contentfulFlexPage.content
   return (
     <Layout>
@@ -37,7 +38,7 @@ export const query = graphql`
     contentfulFlexPage(slug: { eq: "about" }) {
       content {
         ... on ContentfulHeadlineWithText {
-          id
+          headlineText: id
           columns
           headline
           text {
@@ -47,7 +48,7 @@ export const query = graphql`
           }
         }
         ... on ContentfulImageModule {
-          id
+          imageModule: id
           images {
             caption
             image {
@@ -57,7 +58,7 @@ export const query = graphql`
           }
         }
         ... on ContentfulVideoModule {
-          id
+          videoModule: id
           videoLink
           videoCaption
           coverImage {
