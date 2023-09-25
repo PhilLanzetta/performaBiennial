@@ -1,12 +1,13 @@
-import React from "react"
-import Layout from "../components/layout"
-import { graphql } from "gatsby"
-import TextField from "../components/textField"
-import { GatsbyImage } from "gatsby-plugin-image"
-import { FaMapMarkerAlt } from "react-icons/fa"
-import ModuleContent from "../components/moduleContent"
-import Seo from "../components/seo"
-import useWindowSize from "../utils/useWindowSize"
+import React from 'react'
+import Layout from '../components/layout'
+import { graphql } from 'gatsby'
+import TextField from '../components/textField'
+import { GatsbyImage } from 'gatsby-plugin-image'
+import { FaMapMarkerAlt } from 'react-icons/fa'
+import ModuleContent from '../components/moduleContent'
+import Seo from '../components/seo'
+import useWindowSize from '../utils/useWindowSize'
+import { BsArrowRight } from 'react-icons/bs'
 
 const Performance = ({ data }) => {
   const {
@@ -35,16 +36,16 @@ const Performance = ({ data }) => {
   const mobile = width < 701
   return (
     <Layout>
-      <div className="performance-hero-container">
+      <div className='performance-hero-container'>
         <GatsbyImage
           image={heroImage.image.gatsbyImageData}
           alt={heroImage.image.description}
-          className="image"
+          className='image'
         ></GatsbyImage>
-        <div className="performance-hero-text">
-          <div className="hero-artist-container">
-            {artists.map(artist => (
-              <h2 key={artist.id} className="hero-artist">
+        <div className='performance-hero-text'>
+          <div className='hero-artist-container'>
+            {artists.map((artist) => (
+              <h2 key={artist.id} className='hero-artist'>
                 {artist.name}
               </h2>
             ))}
@@ -57,63 +58,65 @@ const Performance = ({ data }) => {
           <div>{heroImage.caption}</div>
         </div>
       </div>
-      <div className="page-container">
-        <div className="flex-container">
-          <div className="left-container">
-            <div className="performance-schedule">
+      <div className='page-container'>
+        <div className='flex-container'>
+          <div className='left-container'>
+            <div className='performance-schedule'>
               <h3>Schedule</h3>
-              <div className="performance-ticket-grid">
-                <div className="performance-ticket-header">
-                  <div>{ticketPrice}</div>
-                  <div>Tickets</div>
+              <div className='performance-ticket-grid'>
+                <div className='performance-ticket-header'>
+                  <div>Time & Date</div>
+                  <div>
+                    Tickets {ticketPrice} <BsArrowRight></BsArrowRight>
+                  </div>
                 </div>
-                {performanceDates?.map(date => (
+                {performanceDates?.map((date) => (
                   <a
                     key={date.id}
                     href={date.ticketUrl}
-                    className="performance-date-row"
+                    className='performance-date-row'
                   >
-                    <p>{date.title.split(":")[0]}</p>
-                    <p>{date.title.split(": ")[1]}</p>
+                    <p>{date.title.split(':')[0]}</p>
+                    <p>{date.title.split(': ')[1]}</p>
                   </a>
                 ))}
               </div>
-              <div className="performance-ticket-btn-container">
+              <div className='performance-ticket-btn-container'>
                 <a
                   href={ticketLink}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="secondary-button rounded mobile-full-width"
+                  target='_blank'
+                  rel='noreferrer'
+                  className='secondary-button rounded mobile-full-width'
                 >
                   Buy Tickets
                 </a>
               </div>
             </div>
-            <div className="performance-location">
+            <div className='performance-location'>
               <h3>Location</h3>
               <div>{locationText}</div>
               <a
                 href={locationMapLink}
-                target="_blank"
-                rel="noreferrer"
-                className="performance-location-link"
+                target='_blank'
+                rel='noreferrer'
+                className='performance-location-link'
               >
-                <FaMapMarkerAlt></FaMapMarkerAlt>{" "}
+                <FaMapMarkerAlt></FaMapMarkerAlt>{' '}
                 <span>View in Google Maps</span>
               </a>
             </div>
             {!mobile && press && (
-              <div className="press-container">
+              <div className='press-container'>
                 <h3>Press</h3>
-                <p className="press-quote lofty">{`"${press[0].callOutQuote}"`}</p>
+                <p className='press-quote lofty'>{`"${press[0].callOutQuote}"`}</p>
                 <p>{`-${press[0].publication}`}</p>
-                <div className="press-pdf-container">
+                <div className='press-pdf-container'>
                   <p>PDF Download:</p>
-                  {press.map(pressItem => (
+                  {press.map((pressItem) => (
                     <a
                       href={`https:${pressItem.pdfFile.file.url}`}
-                      target="_blank"
-                      rel="noreferrer"
+                      target='_blank'
+                      rel='noreferrer'
                       download
                     >
                       {pressItem.publication}
@@ -124,7 +127,7 @@ const Performance = ({ data }) => {
             )}
             {!mobile && (
               <div>
-                {artists.map(artist => (
+                {artists.map((artist) => (
                   <GatsbyImage
                     key={artist.id}
                     image={artist.artistImage?.image.gatsbyImageData}
@@ -134,7 +137,7 @@ const Performance = ({ data }) => {
               </div>
             )}
           </div>
-          <div className="right-container">
+          <div className='right-container'>
             <TextField
               title={title}
               htmlText={performanceDescription.childMarkdownRemark.html}
@@ -142,17 +145,17 @@ const Performance = ({ data }) => {
               headline
             ></TextField>
             {mobile && press && (
-              <div className="press-container">
+              <div className='press-container'>
                 <h3>Press</h3>
-                <p className="press-quote lofty">{`"${press[0].callOutQuote}"`}</p>
+                <p className='press-quote lofty'>{`"${press[0].callOutQuote}"`}</p>
                 <p>{`-${press[0].publication}`}</p>
-                <div className="press-pdf-container">
+                <div className='press-pdf-container'>
                   <p>PDF Download:</p>
-                  {press.map(pressItem => (
+                  {press.map((pressItem) => (
                     <a
                       href={`https:${pressItem.pdfFile.file.url}`}
-                      target="_blank"
-                      rel="noreferrer"
+                      target='_blank'
+                      rel='noreferrer'
                       download
                     >
                       {pressItem.publication}
@@ -161,7 +164,7 @@ const Performance = ({ data }) => {
                 </div>
               </div>
             )}
-            {artists.map(artist => (
+            {artists.map((artist) => (
               <div key={artist.id}>
                 {mobile && artist.artistImage && (
                   <GatsbyImage
@@ -178,43 +181,43 @@ const Performance = ({ data }) => {
             ))}
             {credits && (
               <TextField
-                title="Credits"
+                title='Credits'
                 htmlText={credits.childMarkdownRemark.html}
               ></TextField>
             )}
             {supporters && (
               <TextField
-                title="Supporters"
+                title='Supporters'
                 htmlText={supporters.childMarkdownRemark.html}
               ></TextField>
             )}
             {supporterLogos && (
-              <div className="supporter-logo-container">
-                {supporterLogos.map(logo => (
+              <div className='supporter-logo-container'>
+                {supporterLogos.map((logo) => (
                   <GatsbyImage
                     key={logo.id}
                     image={logo.gatsbyImageData}
                     alt={logo.description}
-                    className="supporter-logo"
+                    className='supporter-logo'
                   ></GatsbyImage>
                 ))}
               </div>
             )}
             {performers && (
               <TextField
-                title="Performers"
+                title='Performers'
                 htmlText={performers.childMarkdownRemark.html}
               ></TextField>
             )}
             {production && (
               <TextField
-                title="Production"
+                title='Production'
                 htmlText={production.childMarkdownRemark.html}
               ></TextField>
             )}
             {specialThanks && (
               <TextField
-                title="Special Thanks"
+                title='Special Thanks'
                 htmlText={specialThanks.childMarkdownRemark.html}
               ></TextField>
             )}

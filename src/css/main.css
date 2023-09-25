@@ -532,7 +532,6 @@ Footer
   font-family: var(--secondary-font);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: var(--spacing-sm);
   line-height: 1.5;
 }
@@ -640,7 +639,6 @@ Footer
     width: 100%;
     padding-left: 0;
     justify-content: center;
-    align-items: center;
     text-align: center;
     margin-bottom: var(--spacing-md);
   }
@@ -727,6 +725,7 @@ Performance Page
 .performance-date-row {
   display: flex;
   width: 100%;
+  transition: all 600ms;
 }
 
 .performance-ticket-header > div {
@@ -736,6 +735,7 @@ Performance Page
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: var(--spacing-xs);
   padding: var(--spacing-xs);
   background: #000000;
   color: #fff;
@@ -753,6 +753,12 @@ Performance Page
   justify-content: center;
   align-items: center;
   padding: var(--spacing-xs);
+}
+
+.performance-date-row:hover {
+  background: var(--accent-color);
+  color: var(--background-color);
+  transition: all 600ms;
 }
 
 .performance-location {
