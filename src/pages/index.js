@@ -1,21 +1,23 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-import { BsArrowRight } from "react-icons/bs"
-import { graphql } from "gatsby"
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import HomeSlider from "../components/homeSlider"
-import Ticker from "../components/ticker"
-import Calendar from "../components/calendar"
+import React, { useEffect, useState } from 'react'
+import { Link } from 'gatsby'
+import { BsArrowRight } from 'react-icons/bs'
+import { graphql } from 'gatsby'
+import Layout from '../components/layout'
+import Seo from '../components/seo'
+import HomeSlider from '../components/homeSlider'
+import Ticker from '../components/ticker'
+import Calendar from '../components/calendar'
+import useWindowSize from '../utils/useWindowSize'
 
 const IndexPage = ({ data, location }) => {
   const allEvents = data.allContentfulPerformance.nodes
-  const [weeks, setWeeks] = useState(["1", "2", "3"])
+  const [weeks, setWeeks] = useState(['1', '2', '3'])
   const [performanceData, setPerformanceData] = useState(allEvents)
   const [firstClick, setFirstClick] = useState(true)
   const [category, setCategory] = useState(location.state?.category || [])
   const carouselImages = data.contentfulHomePageCarousel.carouselImages
+  const { width } = useWindowSize()
+  const mobile = width < 781
 
   function onlyUnique(value, index, array) {
     return array.indexOf(value) === index
@@ -32,42 +34,44 @@ const IndexPage = ({ data, location }) => {
     return arr
   }
 
-  const handleCategoryFilter = input => {
+  const handleCategoryFilter = (input) => {
     if (category.includes(input)) {
-      setCategory(category.filter(item => item !== input))
+      setCategory(category.filter((item) => item !== input))
     } else {
       setCategory([...category, input])
     }
   }
 
-  const filterByCategory = array => {
+  const filterByCategory = (array) => {
     return [
       ...array,
       category
-        .map(term => array.filter(performance => performance.category === term))
+        .map((term) =>
+          array.filter((performance) => performance.category === term)
+        )
         .reduce((a, b) => a.concat(b), []),
     ]
   }
 
   const handleFilterClick = (type, value) => {
-    if (type === "week") {
+    if (type === 'week') {
       if (firstClick) {
         setWeeks([value])
         setFirstClick(false)
       } else {
         if (weeks.includes(value)) {
-          const removeWeek = weeks.filter(week => week !== value)
+          const removeWeek = weeks.filter((week) => week !== value)
           if (removeWeek.length) {
             setWeeks(removeWeek)
           } else {
-            setWeeks(["1", "2", "3"])
+            setWeeks(['1', '2', '3'])
             setFirstClick(true)
           }
         } else {
           setWeeks([value, ...weeks])
         }
       }
-    } else if (type === "category") {
+    } else if (type === 'category') {
       handleCategoryFilter(value)
     }
   }
@@ -77,7 +81,7 @@ const IndexPage = ({ data, location }) => {
     if (category.length) {
       result = filterByCategory(result)
       result = result
-        .filter(item => item.length)
+        .filter((item) => item.length)
         .reduce((a, b) => a.concat(b), [])
         .filter(onlyUnique)
     }
@@ -86,26 +90,28 @@ const IndexPage = ({ data, location }) => {
   return (
     <Layout location={location} handleCategoryFilter={setCategory}>
       <HomeSlider images={carouselImages}></HomeSlider>
-      <Ticker text="Tickets Available Now!"></Ticker>
-      <div className="home-hub-container">
-        <h2 className="home-hub">About the Hub</h2>
-        <div className="page-container">
-          <p className="home-hub-description">
-            Every day during the biennial, many of the programs presented by the
-            Performa Institute are hosted at The Hub - a temporary space in
-            downtown Manhattan that becomes the epicenter of the three-week
-            program. This year, the Hub will be spread accross two locations in
-            Manhattan's Soho Neighborhood.
+      <Ticker text='Tickets Available Now!' big></Ticker>
+      <div className='home-hub-container'>
+        <h2 className='home-hub'>About the Hub</h2>
+        <div className='page-container'>
+          <p className='home-hub-description'>
+            <strong>
+              Every day during the biennial, many of the programs presented by
+              the Performa Institute are hosted at The Hub - a temporary space
+              in downtown Manhattan that becomes the epicenter of the three-week
+              program. This year, the Hub will be spread accross two locations
+              in Manhattan's Soho Neighborhood.
+            </strong>
           </p>
-          <div className="home-hub-locations">
+          <div className='home-hub-locations'>
             <div>
               <h2>Locations</h2>
-              <p className="home-hub-location-item">
+              <p className='home-hub-location-item'>
                 Performa Hub:
                 <br /> 47 Wooster Street, New York
                 <br /> Open Daily from 12-8:00pm
               </p>
-              <p className="home-hub-location-item">
+              <p className='home-hub-location-item'>
                 Performa Hub:
                 <br /> Jeffrey Deitch, 18 Wooster Street, New York
                 <br /> See Calendar for Program
@@ -113,17 +119,17 @@ const IndexPage = ({ data, location }) => {
             </div>
             <div>
               <h2>Opening Hours</h2>
-              <p className="home-hub-location-item">
+              <p className='home-hub-location-item'>
                 Monday – Friday: 9am–9pm
                 <br /> Saturday & Sunday: 9am–11pm
               </p>
             </div>
           </div>
-          <p className="home-hub-more">
-            For more information about events and programming at The Hub, visit{" "}
-            <Link to="/the-hub" className="underline">
+          <p className='home-hub-more'>
+            For more information about events and programming at The Hub, visit{' '}
+            <Link to='/the-hub' className='underline'>
               The Hub
-            </Link>{" "}
+            </Link>{' '}
             page.
           </p>
         </div>
@@ -132,125 +138,124 @@ const IndexPage = ({ data, location }) => {
         text={`“Performa is a gift to New York.” – Jerry Saltz`}
         big
       ></Ticker>
-      <div
-        className="calendar-container"
-        id="calendar"
-      >
-        <h2 className="calendar-title">Event Calendar</h2>
-        <div className="page-container">
-          <div className="filter-container">
-            <div className="filter-preface">
+      <div className='calendar-container' id='calendar'>
+        <h2 className='calendar-title'>Event Calendar</h2>
+        <div className='page-container'>
+          <div className='filter-container'>
+            <div className='filter-preface'>
               Filter <BsArrowRight></BsArrowRight>
             </div>
-            <div className="weeks-filter-container">
+            <div className='weeks-filter-container'>
               <button
                 className={`filter-button ${
                   !firstClick
-                    ? weeks.includes("1")
-                      ? "filter-button-active"
-                      : ""
-                    : ""
+                    ? weeks.includes('1')
+                      ? 'filter-button-active'
+                      : ''
+                    : ''
                 }`}
-                onClick={() => handleFilterClick("week", "1")}
+                onClick={() => handleFilterClick('week', '1')}
               >
                 <span>WEEK 1 (NOV. 01–07)</span>
               </button>
               <button
                 className={`filter-button ${
                   !firstClick
-                    ? weeks.includes("2")
-                      ? "filter-button-active"
-                      : ""
-                    : ""
+                    ? weeks.includes('2')
+                      ? 'filter-button-active'
+                      : ''
+                    : ''
                 }`}
-                onClick={() => handleFilterClick("week", "2")}
+                onClick={() => handleFilterClick('week', '2')}
               >
                 <span>WEEK 2 (NOV. 08–14)</span>
               </button>
               <button
                 className={`filter-button ${
                   !firstClick
-                    ? weeks.includes("3")
-                      ? "filter-button-active"
-                      : ""
-                    : ""
+                    ? weeks.includes('3')
+                      ? 'filter-button-active'
+                      : ''
+                    : ''
                 }`}
-                onClick={() => handleFilterClick("week", "3")}
+                onClick={() => handleFilterClick('week', '3')}
               >
                 <span>WEEK 3 (NOV. 15–19)</span>
               </button>
             </div>
-            <div className="event-filter-container">
+            <div className='event-filter-container'>
               <button
                 className={`filter-button ${
-                  category.includes("Performa Commission")
-                    ? "filter-button-active"
-                    : ""
+                  category.includes('Performa Commission')
+                    ? 'filter-button-active'
+                    : ''
                 }`}
                 onClick={() =>
-                  handleFilterClick("category", "Performa Commission")
+                  handleFilterClick('category', 'Performa Commission')
                 }
               >
-                PERFORMA COMMISSIONS
+                {mobile ? 'COMMISSIONS' : 'PERFORMA COMMISSIONS'}
               </button>
               <button
                 className={`filter-button ${
-                  category.includes("Performa Institute Free Public Event")
-                    ? "filter-button-active"
-                    : ""
+                  category.includes('Performa Institute Free Public Event')
+                    ? 'filter-button-active'
+                    : ''
                 }`}
                 onClick={() =>
                   handleFilterClick(
-                    "category",
-                    "Performa Institute Free Public Event"
+                    'category',
+                    'Performa Institute Free Public Event'
                   )
                 }
               >
-                PERFORMA INSTITUTE FREE PUBLIC EVENTS
+                {mobile
+                  ? 'FREE EVENTS'
+                  : 'PERFORMA INSTITUTE FREE PUBLIC EVENTS'}
               </button>
               <button
                 className={`filter-button ${
-                  category.includes("Broadcast") ? "filter-button-active" : ""
+                  category.includes('Broadcast') ? 'filter-button-active' : ''
                 }`}
-                onClick={() => handleFilterClick("category", "Broadcast")}
+                onClick={() => handleFilterClick('category', 'Broadcast')}
               >
                 BROADCASTS
               </button>
             </div>
           </div>
-          {weeks.includes("1") && (
-            <div className="calendar-week-container">
-              <h2 className="week-heading">Week 1: November 01-07</h2>
+          {weeks.includes('1') && (
+            <div className='calendar-week-container'>
+              <h2 className='week-heading'>Week 1: November 01-07</h2>
               <Calendar
                 dates={getDaysArray(
-                  new Date("2023-11-02"),
-                  new Date("2023-11-09")
+                  new Date('2023-11-02'),
+                  new Date('2023-11-09')
                 )}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
               ></Calendar>
             </div>
           )}
-          {weeks.includes("2") && (
-            <div className="calendar-week-container">
-              <h2 className="week-heading">Week 2: November 08-14</h2>
+          {weeks.includes('2') && (
+            <div className='calendar-week-container'>
+              <h2 className='week-heading'>Week 2: November 08-14</h2>
               <Calendar
                 dates={getDaysArray(
-                  new Date("2023-11-09"),
-                  new Date("2023-11-15")
+                  new Date('2023-11-09'),
+                  new Date('2023-11-15')
                 )}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
               ></Calendar>
             </div>
           )}
-          {weeks.includes("3") && (
-            <div className="calendar-week-container">
-              <h2 className="week-heading">Week 3: November 15-19</h2>
+          {weeks.includes('3') && (
+            <div className='calendar-week-container'>
+              <h2 className='week-heading'>Week 3: November 15-19</h2>
               <Calendar
                 dates={getDaysArray(
-                  new Date("2023-11-16"),
-                  new Date("2023-11-20")
+                  new Date('2023-11-16'),
+                  new Date('2023-11-20')
                 )}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
@@ -306,6 +311,6 @@ export const query = graphql`
   }
 `
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo title='Home' />
 
 export default IndexPage

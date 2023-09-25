@@ -1,19 +1,19 @@
 @font-face {
-  font-family: "Times Ten";
+  font-family: 'Times Ten';
   src: url(../fonts/TimesTenLTStd-Roman.otf);
   font-display: swap;
   font-weight: normal;
 }
 
 @font-face {
-  font-family: "Times Ten";
+  font-family: 'Times Ten';
   src: url(../fonts/TimesTenLTStd-Bold.otf);
   font-display: swap;
   font-weight: bold;
 }
 
 @font-face {
-  font-family: "Times Ten";
+  font-family: 'Times Ten';
   src: url(../fonts/TimesTenLTStd-BoldItalic.otf);
   font-display: swap;
   font-weight: bold;
@@ -21,7 +21,7 @@
 }
 
 @font-face {
-  font-family: "Times Ten";
+  font-family: 'Times Ten';
   src: url(../fonts/TimesTenLTStd-Italic.otf);
   font-display: swap;
   font-weight: normal;
@@ -29,14 +29,14 @@
 }
 
 @font-face {
-  font-family: "Neue Montreal";
+  font-family: 'Neue Montreal';
   src: url(../fonts/NeueMontreal-Bold.otf);
   font-display: swap;
   font-weight: bold;
 }
 
 @font-face {
-  font-family: "Sohn";
+  font-family: 'Sohn';
   src: url(../fonts/Sohn.otf);
   font-display: swap;
   font-weight: normal;
@@ -49,9 +49,9 @@
 }
 
 :root {
-  --primary-font: "Times Ten", serif;
-  --secondary-font: "Helvetica Neue", sans-serif;
-  --tertiary-font: "Sohn", sans-serif;
+  --primary-font: 'Times Ten', serif;
+  --secondary-font: 'Helvetica Neue', sans-serif;
+  --tertiary-font: 'Sohn', sans-serif;
   --primary-color: #000000;
   --accent-color: #0706fe;
   --background-color: #ceff75;
@@ -238,20 +238,20 @@ button {
 }
 
 .info-text {
-  font-family: "Neue Montreal", sans-serif;
+  font-family: 'Neue Montreal', sans-serif;
   font-weight: bold;
   font-size: calc(14px + 1vw);
 }
 
 .info-right {
-  font-family: "Sohn", sans-serif;
+  font-family: 'Sohn', sans-serif;
   font-size: calc(14px + 0.5vw);
 }
 
 .marquee-item {
   color: #ceff75;
   margin: 0 8vw;
-  font-family: "Times Ten", serif;
+  font-family: 'Times Ten', serif;
 }
 
 .large-text {
@@ -458,6 +458,11 @@ Header
 
   #navIcon.open span:nth-child(1) {
     top: 16px;
+  }
+
+  .secondary-menu a,
+  .header-button {
+    padding: var(--spacing-sm);
   }
 }
 
