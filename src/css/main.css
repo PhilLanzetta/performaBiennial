@@ -583,6 +583,7 @@ Footer
   padding: var(--spacing-xs);
   margin-bottom: var(--spacing-md);
   text-align: center; 
+  text-transform: uppercase;
 }
 
 .footer-credits {
