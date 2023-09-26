@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import ImageModule from '../components/imageModule'
@@ -9,9 +9,28 @@ import TeamMember from '../components/teamMember'
 const About = ({ data }) => {
   const content = data.contentfulFlexPage.content
   const staff = data.contentfulAboutPageTeamListing.teamListing
+  const initialScale = 4.25
+  const [scaleY, setScaleY] = useState(4.25)
+
+  const handleScroll = () => {
+    if (scaleY > 0) {
+      setScaleY(initialScale - window.scrollY * 0.008)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <Layout>
-      <h1 className='page-heading about-header'>Performa Biennial</h1>
+      <h1
+        className='page-heading about-header'
+        style={{ transform: `scaleY(${scaleY}) translateY(14%)` }}
+      >
+        Performa Biennial
+      </h1>
       <div className='flex-page-container extra-top-margin'>
         {content.map((item) => {
           if (item.imageModule) {

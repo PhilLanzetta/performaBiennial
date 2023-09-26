@@ -1,29 +1,31 @@
-import React from "react"
-import Layout from "../components/layout"
-import { graphql, Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+import React from 'react'
+import Layout from '../components/layout'
+import { graphql, Link } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Artists = ({ data }) => {
   const artists = data.allContentfulArtist.nodes
   console.log(artists)
   return (
     <Layout>
-      <h1 className="page-heading artists-header">2023 Artists</h1>
-      <div className="artists-container">
-        {artists.map(artist => (
+      <h1 className='page-heading artists-header'>2023 Artists</h1>
+      <div className='artists-container'>
+        {artists.map((artist) => (
           <Link
             key={artist.id}
-            to={`/${artist.performance ? artist.performance[0].slug : ""}`}
-            className="artist-item"
+            to={`/${
+              artist.performance?.length ? artist.performance[0].slug : ''
+            }`}
+            className='artist-item'
           >
             <GatsbyImage
               image={artist.artistImage?.image.gatsbyImageData}
               alt={artist.artistImage?.image.description}
-              className="artist-item-image"
+              className='artist-item-image'
             ></GatsbyImage>
-            <p className="artist-item-name">{artist.name}</p>
+            <p className='artist-item-name'>{artist.name}</p>
             {artist.performance && (
-              <p className="artist-item-title">
+              <p className='artist-item-title'>
                 {artist.performance[0]?.title}
               </p>
             )}

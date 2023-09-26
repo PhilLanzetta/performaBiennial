@@ -1235,7 +1235,7 @@ MODULE CONTENT
 
 .about-header {
   font-size: clamp(20px, 8vw, 200px);
-  transform: scaleY(4.25) translateY(14%);
+  /* transform: scaleY(4.25) translateY(14%); */
 }
 
 .hub-header {
