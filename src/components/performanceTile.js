@@ -25,8 +25,6 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
         day: '2-digit',
       }) === day
   )
-
-  console.log(performanceDates)
   return (
     <div className='performance-tile'>
       <Link to={`/${slug}`}>

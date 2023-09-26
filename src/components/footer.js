@@ -3,6 +3,7 @@ import Ticker from './ticker'
 import BangBlue from '../images/BANG_BLUE.png'
 import PerformaLogo from '../images/performa_banner.png'
 import { Link } from 'gatsby'
+import MailForm from './mailForm'
 
 const Footer = () => {
   return (
@@ -18,10 +19,7 @@ const Footer = () => {
             and upcoming events.
           </p>
           <div className='email-input-container'>
-            <input placeholder='E-mail' className='email-input'></input>
-            <button type='submit' className='secondary-button'>
-              Submit
-            </button>
+            <MailForm></MailForm>
           </div>
         </div>
         <div className='footer-top-item'>
