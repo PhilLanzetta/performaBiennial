@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout'
-import { graphql } from 'gatsby'
+import { graphql, Link } from 'gatsby'
 import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
@@ -10,24 +10,31 @@ const TheHub = ({ data }) => {
   return (
     <Layout>
       <h1 className='page-heading hub-header'>The Hub</h1>
-      {content.map((item) => {
-        if (item.imageModule) {
-          return (
-            <ImageModule key={item.imageModule} content={item}></ImageModule>
-          )
-        } else if (item.videoModule) {
-          return (
-            <VideoModule key={item.videoModule} content={item}></VideoModule>
-          )
-        } else if (item.headlineText) {
-          return (
-            <HeadlineTextModule
-              key={item.headlineText}
-              content={item}
-            ></HeadlineTextModule>
-          )
-        } else return null
-      })}
+      <div className='flex-page-container'>
+        {content.map((item) => {
+          if (item.imageModule) {
+            return (
+              <ImageModule key={item.imageModule} content={item}></ImageModule>
+            )
+          } else if (item.videoModule) {
+            return (
+              <VideoModule key={item.videoModule} content={item}></VideoModule>
+            )
+          } else if (item.headlineText) {
+            return (
+              <HeadlineTextModule
+                key={item.headlineText}
+                content={item}
+              ></HeadlineTextModule>
+            )
+          } else return null
+        })}
+        <div className='flex-container center'>
+          <Link to='/#calendar' className='secondary-button center rounded'>
+            Full Calendar
+          </Link>
+        </div>
+      </div>
     </Layout>
   )
 }

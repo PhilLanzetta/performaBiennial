@@ -62,7 +62,7 @@
   --spacing-sm: 20px;
   --spacing-md: 40px;
   --spacing-lg: 60px;
-  --spacing-xl: 85px;
+  --spacing-xl: calc(85px + 4vw);
 }
 
 html {
@@ -170,6 +170,11 @@ h2 {
   color: var(--accent-color);
   background: var(--background-color);
   transition: all 600ms;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
 }
 
 .rounded {
@@ -1127,6 +1132,11 @@ MODULE CONTENT
   padding: var(--spacing-lg) 0;
 }
 
+.module-image-container figcaption,
+.module-video figcaption {
+  margin-bottom: var(--spacing-sm);
+}
+
 .module-video {
   padding: var(--spacing-lg) 0;
 }
@@ -1202,17 +1212,17 @@ MODULE CONTENT
 }
 
 .about-header {
-  font-size: 8vw;
+  font-size: clamp(20px, 8vw, 200px);
   transform: scaleY(4.25) translateY(14%);
 }
 
 .hub-header {
-  font-size: 19vw;
+  font-size: clamp(20px, 19vw, 475px);
   transform: scaleY(1.8) translateY(9%);
 }
 
 .pavilion-header {
-  font-size: 16.5vw;
+  font-size: clamp(20px, 16.5vw, 412px);
   transform: scaleY(2) translateY(10%);
 }
 
@@ -1256,4 +1266,22 @@ MODULE CONTENT
   .artist-item {
     width: 100%;
   }
+}
+
+.flex-page-container {
+  max-width: clamp(200px, 96vw, 1000px);
+  margin: 0 auto;
+  margin-bottom: var(--spacing-lg);
+}
+
+.headline-text-container {
+  margin-bottom: var(--spacing-md);
+}
+
+.headline-text-container p {
+  margin-bottom: var(--spacing-md);
+}
+
+.extra-top-margin {
+  margin-top: var(--spacing-xl);
 }

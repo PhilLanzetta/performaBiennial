@@ -74,6 +74,8 @@ const Performance = ({ data }) => {
                   <a
                     key={date.id}
                     href={date.ticketUrl}
+                    target='_blank'
+                    rel='noreferrer'
                     className='performance-date-row'
                   >
                     <p>{date.title.split(':')[0]}</p>
