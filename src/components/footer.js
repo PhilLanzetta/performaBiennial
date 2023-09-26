@@ -7,7 +7,7 @@ import { Link } from 'gatsby'
 const Footer = () => {
   return (
     <div className='footer-container'>
-      <Ticker text='Tickets Available Now!'></Ticker>
+      <Ticker text='Tickets Available Now!' big></Ticker>
       <div className='footer-row'>
         <div className='footer-bang-container'>
           <img src={BangBlue} className='footer-bang-blue' alt=''></img>

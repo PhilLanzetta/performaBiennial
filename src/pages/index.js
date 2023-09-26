@@ -15,7 +15,9 @@ const IndexPage = ({ data, location }) => {
   const [performanceData, setPerformanceData] = useState(allEvents)
   const [firstClick, setFirstClick] = useState(true)
   const [category, setCategory] = useState(location.state?.category || [])
-  const carouselImages = data.contentfulHomePageCarousel.carouselImages
+  const carouselImages = data.contentfulHomePage.carouselImages
+  const hubContent = data.contentfulHomePage
+  const tickerText = data.contentfulHomePage.tickerText
   const { width } = useWindowSize()
   const mobile = width < 781
 
@@ -94,35 +96,30 @@ const IndexPage = ({ data, location }) => {
       <div className='home-hub-container'>
         <h2 className='home-hub'>About the Hub</h2>
         <div className='page-container'>
-          <p className='home-hub-description'>
-            <strong>
-              Every day during the biennial, many of the programs presented by
-              the Performa Institute are hosted at The Hub - a temporary space
-              in downtown Manhattan that becomes the epicenter of the three-week
-              program. This year, the Hub will be spread accross two locations
-              in Manhattan's Soho Neighborhood.
-            </strong>
-          </p>
+          <div
+            className='home-hub-description'
+            dangerouslySetInnerHTML={{
+              __html: hubContent.theHubDescription.childMarkdownRemark.html,
+            }}
+          ></div>
           <div className='home-hub-locations'>
             <div>
-              <h2>Locations</h2>
-              <p className='home-hub-location-item'>
-                Performa Hub:
-                <br /> 47 Wooster Street, New York
-                <br /> Open Daily from 12-8:00pm
-              </p>
-              <p className='home-hub-location-item'>
-                Performa Hub:
-                <br /> Jeffrey Deitch, 18 Wooster Street, New York
-                <br /> See Calendar for Program
-              </p>
+              <h2>Location</h2>
+              <div
+                className='home-hub-location-item'
+                dangerouslySetInnerHTML={{
+                  __html: hubContent.theHubLocations.childMarkdownRemark.html,
+                }}
+              ></div>
             </div>
             <div>
               <h2>Opening Hours</h2>
-              <p className='home-hub-location-item'>
-                Monday – Friday: 9am–9pm
-                <br /> Saturday & Sunday: 9am–11pm
-              </p>
+              <div
+                className='home-hub-location-item'
+                dangerouslySetInnerHTML={{
+                  __html: hubContent.theHubHours.childMarkdownRemark.html,
+                }}
+              ></div>
             </div>
           </div>
           <p className='home-hub-more'>
@@ -132,12 +129,12 @@ const IndexPage = ({ data, location }) => {
             </Link>{' '}
             page.
           </p>
+          <p className='home-hub-more'>
+            Open to the public from November 2 – 19, 2023
+          </p>
         </div>
       </div>
-      <Ticker
-        text={`“Performa is a gift to New York.” – Jerry Saltz`}
-        big
-      ></Ticker>
+      <Ticker text={tickerText} big></Ticker>
       <div className='calendar-container' id='calendar'>
         <h2 className='calendar-title'>Event Calendar</h2>
         <div className='page-container'>
@@ -299,15 +296,30 @@ export const query = graphql`
         ticketLink
       }
     }
-    contentfulHomePageCarousel {
+    contentfulHomePage {
       carouselImages {
+        caption
         image {
           gatsbyImageData
-          id
           description
         }
-        caption
       }
+      theHubDescription {
+        childMarkdownRemark {
+          html
+        }
+      }
+      theHubHours {
+        childMarkdownRemark {
+          html
+        }
+      }
+      theHubLocations {
+        childMarkdownRemark {
+          html
+        }
+      }
+      tickerText
     }
   }
 `

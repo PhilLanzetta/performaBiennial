@@ -5,7 +5,12 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 const VideoModule = ({ content }) => {
   const [isPlaying, setIsPlaying] = useState(false)
   return (
-    <div key={content.videoModule} className='module-video'>
+    <div
+      key={content.videoModule}
+      className={`module-video ${
+        content.margin === 'In-text' ? 'max-width' : ''
+      }`}
+    >
       <div className='module-video-container'>
         <ReactPlayer
           url={content.videoLink}

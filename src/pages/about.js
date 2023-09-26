@@ -4,9 +4,11 @@ import { graphql } from 'gatsby'
 import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
+import TeamMember from '../components/teamMember'
 
-const About = ({data}) => {
+const About = ({ data }) => {
   const content = data.contentfulFlexPage.content
+  const staff = data.contentfulAboutPageTeamListing.teamListing
   return (
     <Layout>
       <h1 className='page-heading about-header'>Performa Biennial</h1>
@@ -29,6 +31,14 @@ const About = ({data}) => {
             )
           } else return null
         })}
+        <div className='max-width'>
+          <h2>Performa Team</h2>
+          <div className='member-grid'>
+            {staff.map((teamMember) => (
+              <TeamMember key={teamMember.id} member={teamMember}></TeamMember>
+            ))}
+          </div>
+        </div>
       </div>
     </Layout>
   )
@@ -50,6 +60,7 @@ export const query = graphql`
         }
         ... on ContentfulImageModule {
           imageModule: id
+          margin
           images {
             caption
             image {
@@ -61,12 +72,26 @@ export const query = graphql`
         ... on ContentfulVideoModule {
           videoModule: id
           videoLink
+          margin
           videoCaption
           coverImage {
             description
             gatsbyImageData
           }
         }
+      }
+    }
+    contentfulAboutPageTeamListing {
+      teamListing {
+        id
+        bio {
+          childMarkdownRemark {
+            html
+          }
+        }
+        email
+        position
+        name
       }
     }
   }

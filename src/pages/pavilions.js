@@ -50,6 +50,7 @@ export const query = graphql`
         }
         ... on ContentfulImageModule {
           imageModule: id
+          margin
           images {
             caption
             image {
@@ -60,6 +61,7 @@ export const query = graphql`
         }
         ... on ContentfulVideoModule {
           videoModule: id
+          margin
           videoLink
           videoCaption
           coverImage {

@@ -338,6 +338,7 @@ export const query = graphql`
       moduleContent {
         ... on ContentfulImageModule {
           imageModule: id
+          margin
           images {
             caption
             image {
@@ -352,6 +353,7 @@ export const query = graphql`
             description
             gatsbyImageData
           }
+          margin
           videoCaption
           videoLink
         }

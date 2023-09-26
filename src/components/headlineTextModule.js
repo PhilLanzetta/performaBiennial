@@ -9,7 +9,7 @@ const HeadlineTextModule = ({ content }) => {
   }
   return (
     <div className='headline-text-container'>
-      <h2>{content.headline}</h2>
+      {content.headline && <h2>{content.headline}</h2>}
       <div
         dangerouslySetInnerHTML={{
           __html: content.text.childMarkdownRemark.html,
