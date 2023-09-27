@@ -14,10 +14,10 @@ const About = ({ data }) => {
   const [transform, setTransform] = useState({ scaleY: 4.25, translateY: 52 })
 
   const handleScroll = () => {
-    if (transform.scaleY > 0) {
+    if (window.scrollY < 185) {
       setTransform({
         scaleY: initialScale - window.scrollY * 0.008,
-        translateY: initialTransform + window.scrollY * 0.07,
+        translateY: initialTransform + window.scrollY * 0.06,
       })
     }
   }

@@ -582,7 +582,7 @@ Footer
   color: var(--background-color);
   padding: var(--spacing-xs);
   margin-bottom: var(--spacing-md);
-  text-align: center; 
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -1229,29 +1229,29 @@ MODULE CONTENT
 }
 
 .artists-header {
-  transform: scaleY(2.4) translateY(12%);
   font-size: 14.25vw;
+  transform-origin: bottom;
 }
 
 .about-header {
   font-size: clamp(20px, 8vw, 200px);
   transform-origin: bottom;
-  /* transform: scaleY(4.25) translateY(14%); */
 }
 
 .hub-header {
   font-size: clamp(20px, 19vw, 475px);
-  transform: scaleY(1.8) translateY(9%);
+  transform-origin: bottom;
 }
 
 .pavilion-header {
   font-size: clamp(20px, 16.5vw, 412px);
-  transform: scaleY(2) translateY(10%);
+  transform-origin: bottom;
 }
 
 .artists-container {
   display: flex;
   gap: 3vw;
+  margin-top: var(--spacing-lg);
   padding: var(--spacing-lg) 3vw;
   flex-wrap: wrap;
 }

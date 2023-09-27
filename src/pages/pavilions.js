@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '../components/layout'
 import { graphql } from 'gatsby'
 import ImageModule from '../components/imageModule'
@@ -7,9 +7,34 @@ import HeadlineTextModule from '../components/headlineTextModule'
 
 const Pavilions = ({ data }) => {
   const content = data.contentfulFlexPage.content
+  const initialScale = 2
+  const initialTransform = 35
+  const [transform, setTransform] = useState({ scaleY: 2, translateY: 35 })
+
+  const handleScroll = () => {
+    if (window.scrollY < 185) {
+      setTransform({
+        scaleY: initialScale - window.scrollY * 0.005,
+        translateY: initialTransform,
+      })
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <Layout>
-      <h1 className='page-heading pavilion-header'>Pavilions</h1>
+      <h1
+        className='page-heading pavilion-header'
+        style={{
+          transform: `scaleY(${transform.scaleY}) translateY(${transform.translateY}%)`,
+        }}
+      >
+        Pavilions
+      </h1>
       <div className='flex-page-container'>
         {content.map((item) => {
           if (item.imageModule) {
