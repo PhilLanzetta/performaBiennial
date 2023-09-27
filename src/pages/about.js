@@ -10,11 +10,15 @@ const About = ({ data }) => {
   const content = data.contentfulFlexPage.content
   const staff = data.contentfulAboutPageTeamListing.teamListing
   const initialScale = 4.25
-  const [scaleY, setScaleY] = useState(4.25)
+  const initialTransform = 52
+  const [transform, setTransform] = useState({ scaleY: 4.25, translateY: 52 })
 
   const handleScroll = () => {
-    if (scaleY > 0) {
-      setScaleY(initialScale - window.scrollY * 0.008)
+    if (transform.scaleY > 0) {
+      setTransform({
+        scaleY: initialScale - window.scrollY * 0.008,
+        translateY: initialTransform + window.scrollY * 0.07,
+      })
     }
   }
 
@@ -27,7 +31,9 @@ const About = ({ data }) => {
     <Layout>
       <h1
         className='page-heading about-header'
-        style={{ transform: `scaleY(${scaleY}) translateY(14%)` }}
+        style={{
+          transform: `scaleY(${transform.scaleY}) translateY(${transform.translateY}%)`,
+        }}
       >
         Performa Biennial
       </h1>

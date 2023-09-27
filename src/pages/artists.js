@@ -5,7 +5,6 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Artists = ({ data }) => {
   const artists = data.allContentfulArtist.nodes
-  console.log(artists)
   return (
     <Layout>
       <h1 className='page-heading artists-header'>2023 Artists</h1>
