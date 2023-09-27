@@ -5,7 +5,8 @@ import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
 
-const Supporters = () => {
+const Supporters = ({ data }) => {
+  const content = data.contentfulFlexPage.content
   const initialScale = 2.1
   const initialTransform = 35
   const [transform, setTransform] = useState({ scaleY: 2.1, translateY: 35 })
@@ -34,8 +35,68 @@ const Supporters = () => {
       >
         Supporters
       </h1>
+      <div className='flex-page-container'>
+        {content.map((item) => {
+          if (item.imageModule) {
+            return (
+              <ImageModule key={item.imageModule} content={item}></ImageModule>
+            )
+          } else if (item.videoModule) {
+            return (
+              <VideoModule key={item.videoModule} content={item}></VideoModule>
+            )
+          } else if (item.headlineText) {
+            return (
+              <HeadlineTextModule
+                key={item.headlineText}
+                content={item}
+              ></HeadlineTextModule>
+            )
+          } else return null
+        })}
+      </div>
     </Layout>
   )
 }
+
+export const query = graphql`
+  query {
+    contentfulFlexPage(slug: { eq: "supporters" }) {
+      content {
+        ... on ContentfulHeadlineWithText {
+          headlineText: id
+          columns
+          headline
+          text {
+            childMarkdownRemark {
+              html
+            }
+          }
+        }
+        ... on ContentfulImageModule {
+          imageModule: id
+          margin
+          images {
+            caption
+            image {
+              description
+              gatsbyImageData
+            }
+          }
+        }
+        ... on ContentfulVideoModule {
+          videoModule: id
+          margin
+          videoLink
+          videoCaption
+          coverImage {
+            description
+            gatsbyImageData
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Supporters

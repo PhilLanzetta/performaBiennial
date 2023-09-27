@@ -1338,6 +1338,10 @@ MODULE CONTENT
   margin-top: var(--spacing-xl);
 }
 
+.extralg-top-margin {
+  margin-top: calc(var(--spacing-xl) + 4vw);
+}
+
 .max-width {
   width: clamp(200px, 96vw, 1000px);
   margin: 0 auto;
