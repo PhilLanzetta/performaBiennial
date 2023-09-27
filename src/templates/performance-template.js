@@ -164,19 +164,22 @@ const Performance = ({ data }) => {
                 >
                   {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}
                 </a>
-                <AddToCalendarButton
-                  name={title}
-                  location={locationText}
-                  options={['Google', 'Apple', 'iCal', 'Outlook.com']}
-                  listStyle='overlay'
-                  buttonStyle='round'
-                  timeZone='EST'
-                  dates={dates}
-                  hideCheckmark
-                  hideBranding
-                  inline
-                  styleLight={calendarStyle}
-                ></AddToCalendarButton>
+                <div className='calendar-btn'>
+                  <AddToCalendarButton
+                    name={title}
+                    location={locationText}
+                    options={['Google', 'Apple', 'iCal', 'Outlook.com']}
+                    listStyle='overlay'
+                    buttonStyle='round'
+                    timeZone='EST'
+                    dates={dates}
+                    hideCheckmark
+                    hideBranding
+                    inline
+                    size='3'
+                    styleLight={calendarStyle}
+                  ></AddToCalendarButton>
+                </div>
               </div>
             </div>
             <div className='performance-location'>

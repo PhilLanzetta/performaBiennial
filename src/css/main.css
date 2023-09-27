@@ -1100,20 +1100,25 @@ HOME
 }
 
 .tile-bottom {
+  width: 100%;
   margin-top: var(--spacing-sm);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: var(--spacing-sm);
   padding-bottom: var(--spacing-md);
 }
 
 .tile-bottom .secondary-button,
-.performance-ticket-btn-container .secondary-button {
+.tile-bottom .calendar-btn,
+.performance-ticket-btn-container .secondary-button, .performance-ticket-btn-container .calendar-btn {
   margin-bottom: 0;
   width: 50%;
 }
 
+.tile-bottom .calendar-btn,
+.performance-ticket-btn-container .calendar-btn {
+  display: flex;
+  justify-content: flex-end;
+}
 @media screen and (max-width: 780px) {
   .filter-container {
     display: flex;

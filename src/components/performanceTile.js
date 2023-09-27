@@ -8,9 +8,8 @@ const calendarStyle = `--base-font-size-l: 8px;
   --base-font-size-s: 8px;
   --font: 'Helvetica Neue', sans-serif;
   --keyboard-focus: #0706fe;
-  --btn-background: #fff;
-  --btn-background-hover: #fff;
-  --btn-border: #0706fe;
+  --btn-background: transparent;
+  --btn-background-hover: transparent;
   --btn-text: #0706fe;
   --btn-text-hover: #0706fe;
   --btn-shadow: none;
@@ -22,8 +21,8 @@ const calendarStyle = `--base-font-size-l: 8px;
   --list-text-hover: #0706fe;
   --list-close-background: #e5e5e5;
   --list-close-text: #777;
-  --list-shadow: rgba(0 0 0 / 20%) 2px 5px 18px -1px, rgba(0 0 0 / 40%) 2px 2px 10px -3px;
-  --list-shadow-modal: rgba(0 0 0 / 60%) 3px 6px 40px -5px, rgba(0 0 0 / 60%) 3px 3px 15px -4px;
+  --list-shadow: none;
+  --list-shadow-modal: none;
   --modal-text: #0706fe;
   --modal-background: #fff;
   --modal-btn-bar: #c6c8cd;
@@ -33,9 +32,9 @@ const calendarStyle = `--base-font-size-l: 8px;
   --modal-btn-text: #ceff75;
   --modal-btn-text-hover: #161616;
   --modal-btn-secondary-text: #0706fe;
-  --modal-shadow: drop-shadow(5px 8px 30px rgba(0 0 0 / 70%));
-  --modal-shadow-btn: rgba(0 0 0 / 10%) 2px 3px 10px -3px,rgba(0 0 0 / 25%) 1px 1px 8px -4px;
-  --modal-shadow-btn-hover: rgba(0 0 0 / 35%) 3px 5px 15px -2px,rgba(0 0 0 / 20%) 2px 4px 25px -6px;
+  --modal-shadow: none;
+  --modal-shadow-btn: none;
+  --modal-shadow-btn-hover: none;
   --date-btn-text: #1d1d1e;
   --date-btn-text-secondary: #3a3a3f;
   --date-btn-cal-day-text: #fff;
@@ -43,10 +42,10 @@ const calendarStyle = `--base-font-size-l: 8px;
   --date-btn-cal-background: #313132;
   --date-btn-background: #eae9ed;
   --date-btn-background-hover: #fff;
-  --date-btn-shadow: rgba(0 0 0 / 40%) 1px 3px 15px -4px, rgba(0 0 0 / 20%) 1px 1px 8px -4px;
-  --date-btn-shadow-hover: rgba(0 0 0 / 40%) 4px 6px 18px -1px, rgba(0 0 0 / 35%) 4px 5px 25px -2px;
-  --checkmark-background: radial-gradient(circle,#fff 0,rgba(255 255 255 / 80%) 40%,rgba(255 255 255 / 0%) 70%);
-  --overlay-background: rgba(20 20 20 / 25%);
+  --date-btn-shadow: none;
+  --date-btn-shadow-hover: none;
+  --checkmark-background: none;
+  --overlay-background: none;
   --overlay-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23777' width='16' height='16' viewBox='0 0 122.878 122.88'%3E%3Cpath d='M1.426 8.313a4.87 4.87 0 0 1 0-6.886 4.87 4.87 0 0 1 6.886 0l53.127 53.127 53.127-53.127a4.87 4.87 0 0 1 6.887 0 4.87 4.87 0 0 1 0 6.886L68.324 61.439l53.128 53.128a4.87 4.87 0 0 1-6.887 6.886L61.438 68.326 8.312 121.453a4.87 4.87 0 0 1-6.886 0 4.87 4.87 0 0 1 0-6.886l53.127-53.128L1.426 8.313h0z'/%3E%3C/svg%3E") 16 16, crosshair;
   --icon-ms365-color: #ea3e23;
   --icon-yahoo-color: #5f01d1;
@@ -160,33 +159,37 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
         >
           {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}
         </a>
-        <AddToCalendarButton
-          name={title}
-          startDate={new Date(times[0].startTime).toLocaleString('en-CA', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-          })}
-          startTime={new Date(times[0].startTime).toLocaleString('en-CA', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false,
-          })}
-          endTime={new Date(times[0].endTime).toLocaleString('en-CA', {
-            hour: '2-digit',
-            minute: '2-digit',
-            hour12: false,
-          })}
-          location={locationText}
-          options={['Google', 'Apple', 'iCal', 'Outlook.com']}
-          listStyle='overlay'
-          buttonStyle='round'
-          timeZone='EST'
-          hideCheckmark
-          hideBranding
-          inline
-          styleLight={calendarStyle}
-        ></AddToCalendarButton>
+        <div className='calendar-btn'>
+          <AddToCalendarButton
+            name={title}
+            startDate={new Date(times[0].startTime).toLocaleString('en-CA', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+            })}
+            startTime={new Date(times[0].startTime).toLocaleString('en-CA', {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false,
+            })}
+            endTime={new Date(times[0].endTime).toLocaleString('en-CA', {
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false,
+            })}
+            location={locationText}
+            options={['Google', 'Apple', 'iCal', 'Outlook.com']}
+            listStyle='overlay'
+            buttonStyle='round'
+            timeZone='EST'
+            hideCheckmark
+            hideBranding
+            hideBackground
+            inline
+            size="3"
+            styleLight={calendarStyle}
+          ></AddToCalendarButton>
+        </div>
       </div>
     </div>
   )
