@@ -2,10 +2,10 @@ import React from 'react'
 import Ticker from './ticker'
 import BangBlue from '../images/BANG_BLUE.png'
 import PerformaLogo from '../images/performa_banner.png'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import MailForm from './mailForm'
 
-const Footer = () => {
+const Footer = ({ location, handleCategoryFilter }) => {
   return (
     <div className='footer-container'>
       <Ticker text='Tickets Available Now!' big></Ticker>
@@ -67,27 +67,49 @@ const Footer = () => {
         <div className='footer-bottom-item'>
           <h4>About</h4>
           <div className='footer-links-container'>
-            <Link to='/'>Performa</Link>
-            <Link to='/'>2023 Biennial</Link>
-            <Link to='/'>Performa Team</Link>
-            <Link to='/'>FAQ</Link>
+            <Link to='/about'>Performa</Link>
+            <Link to='/artists'>2023 Biennial</Link>
+            <Link to='/about/#team'>Performa Team</Link>
+            <Link to='/faq'>FAQ</Link>
           </div>
         </div>
         <div className='footer-bottom-item'>
           <h4>Get In Touch</h4>
           <div className='footer-links-container'>
-            <Link to='/'>Support</Link>
-            <Link to='/'>Contact</Link>
-            <Link to='/'>Press</Link>
+            <a href='mailto:email@performa.org'>Support</a>
+            <a href='mailto:email@performa.org'>Contact</a>
+            <a href='mailto:email@performa.org'>Press</a>
           </div>
         </div>
         <div className='footer-bottom-item'>
           <h4>Performa 2023</h4>
           <div className='footer-links-container'>
-            <Link to='/'>Shop</Link>
-            <Link to='/'>Commissions</Link>
-            <Link to='/'>The Hub</Link>
-            <Link to='/'>Pavilion</Link>
+            <a
+              href='https://performa.bigcartel.com/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Shop
+            </a>
+            {location?.pathname === '/' ? (
+              <button
+                onClick={() => {
+                  handleCategoryFilter(['Performa Commission'])
+                  navigate('/#calendar')
+                }}
+              >
+                Commissions
+              </button>
+            ) : (
+              <Link
+                to='/#calendar'
+                state={{ category: ['Performa Commission'] }}
+              >
+                Commissions
+              </Link>
+            )}
+            <Link to='/the-hub'>The Hub</Link>
+            <Link to='/pavilions'>Pavilion</Link>
           </div>
         </div>
       </div>
@@ -100,9 +122,9 @@ const Footer = () => {
         >
           Website designed and developed by Pacific
         </a>
-        <Link to='/'>
+        <a href='https://performa-arts.org/' target='_blank' rel='noreferrer'>
           <img src={PerformaLogo} alt='' className='footer-logo'></img>
-        </Link>
+        </a>
       </div>
     </div>
   )

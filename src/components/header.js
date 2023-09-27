@@ -95,7 +95,7 @@ const Header = ({ location, handleCategoryFilter }) => {
         </div>
         <div className='header-broadcast-container'>
           <Link
-            to='/broadcast'
+            to='/'
             className='broadcast-link'
             onClick={() => setIsOpen(false)}
           >

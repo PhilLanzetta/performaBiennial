@@ -5,16 +5,16 @@ import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
 
-const Supporters = () => {
-  const initialScale = 2.1
-  const initialTransform = 35
-  const [transform, setTransform] = useState({ scaleY: 2.1, translateY: 35 })
+const FAQ = () => {
+  const initialScale = 5.35
+  const initialTransform = 53
+  const [transform, setTransform] = useState({ scaleY: 5.35, translateY: 53 })
 
   const handleScroll = () => {
     if (window.scrollY < 185) {
       setTransform({
-        scaleY: initialScale - window.scrollY * 0.006,
-        translateY: initialTransform + window.scrollY * 0.02,
+        scaleY: initialScale - window.scrollY * 0.014,
+        translateY: initialTransform + window.scrollY * 0.08,
       })
     }
   }
@@ -27,15 +27,15 @@ const Supporters = () => {
   return (
     <Layout>
       <h1
-        className='page-heading supporter-header'
+        className='page-heading faq-header'
         style={{
           transform: `scaleY(${transform.scaleY}) translateY(${transform.translateY}%)`,
         }}
       >
-        Supporters
+        Frequently Asked Questions
       </h1>
     </Layout>
   )
 }
 
-export default Supporters
+export default FAQ

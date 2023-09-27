@@ -1255,6 +1255,16 @@ MODULE CONTENT
   transform-origin: bottom;
 }
 
+.faq-header {
+  font-size: clamp(20px, 5.25vw, 200px);
+  transform-origin: bottom;
+}
+
+.supporter-header {
+  font-size: clamp(20px, 13.25vw, 400px);
+  transform-origin: bottom;
+}
+
 .hub-header {
   font-size: clamp(20px, 19vw, 475px);
   transform-origin: bottom;
