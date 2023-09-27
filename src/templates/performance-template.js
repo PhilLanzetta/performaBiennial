@@ -8,6 +8,7 @@ import ModuleContent from '../components/moduleContent'
 import Seo from '../components/seo'
 import useWindowSize from '../utils/useWindowSize'
 import { BsArrowRight } from 'react-icons/bs'
+import { AddToCalendarButton } from 'add-to-calendar-button-react'
 
 const Performance = ({ data }) => {
   const {
@@ -34,6 +35,25 @@ const Performance = ({ data }) => {
   } = data.contentfulPerformance
   const { width } = useWindowSize()
   const mobile = width < 701
+  const dates = performanceDates.map((performance) => {
+    return {
+      startDate: new Date(performance.startTime).toLocaleString('en-CA', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }),
+      startTime: new Date(performance.startTime).toLocaleString('en-CA', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      }),
+      endTime: new Date(performance.endTime).toLocaleString('en-CA', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+      }),
+    }
+  })
   return (
     <Layout>
       <div className='performance-hero-container'>
@@ -92,6 +112,19 @@ const Performance = ({ data }) => {
                 >
                   {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}
                 </a>
+                <AddToCalendarButton
+                  name={title}
+                  location={locationText}
+                  options={['Google', 'Apple', 'iCal', 'Outlook.com']}
+                  listStyle='overlay'
+                  buttonStyle='text'
+                  timeZone='EST'
+                  dates={dates}
+                  hideCheckmark
+                  hideBranding
+                  inline
+                  styleLight="--btn-background: #fff; --btn-text: #000; --font: 'Helvetica Neue', sans-serif; --btn-underline: none --btn-shadow: none; --btn-border: none;"
+                ></AddToCalendarButton>
               </div>
             </div>
             <div className='performance-location'>

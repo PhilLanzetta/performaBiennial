@@ -111,10 +111,12 @@ a {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
+  transition: all 600ms;
 }
 
 a:hover {
-  color: #000000;
+  color: var(--accent-color);
+  transition: all 600ms;
 }
 
 h1 {
@@ -154,8 +156,10 @@ h2 {
 }
 
 .secondary-button {
-  display: inline-block;
+  display: inline-flex;
   text-transform: uppercase;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: var(--background-color);
   background: var(--accent-color);
@@ -825,7 +829,7 @@ Performance Page
   margin: var(--spacing-sm) 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .press-container {
@@ -1031,7 +1035,7 @@ HOME
   flex-wrap: wrap;
 }
 
-.day-column {
+.performance-tile {
   width: 25%;
   padding: var(--spacing-md) var(--spacing-xs);
   padding-bottom: 0;
@@ -1039,13 +1043,16 @@ HOME
   border-bottom: 1px solid #000;
 }
 
-.day-heading-line {
-  margin-bottom: var(--spacing-md);
+.tile-time-price-item p {
+  display: inline-block;
 }
 
-.performance-tile {
-  padding: var(--spacing-sm) 0;
-  border-top: 1px solid #000;
+.tile-time-price-item p::after {
+  content: ',';
+}
+
+.tile-time-price-item p:last-of-type:after {
+  content: '';
 }
 
 .tile-artist-container {
@@ -1087,14 +1094,24 @@ HOME
   font-family: var(--secondary-font);
   border: 1px solid #000;
   border-width: 0 1px 1px 0;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xs);
 }
 
 .tile-bottom {
   margin-top: var(--spacing-sm);
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: var(--spacing-sm);
+  padding-bottom: var(--spacing-md);
+}
+
+.tile-bottom .secondary-button,
+.performance-ticket-btn-container .secondary-button {
+  margin-bottom: 0;
+  width: 50%;
 }
 
 @media screen and (max-width: 780px) {
@@ -1115,7 +1132,7 @@ HOME
     border: 1px solid #000000;
   }
 
-  .day-column {
+  .performance-tile {
     width: 50%;
   }
 }
@@ -1129,7 +1146,7 @@ HOME
     padding-left: 0;
   }
 
-  .day-column {
+  .performance-tile {
     width: 100%;
   }
 

@@ -27,6 +27,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
   )
   return (
     <div className='performance-tile'>
+      <h2>{day}</h2>
       <Link to={`/${slug}`}>
         <GatsbyImage
           image={tileImage.gatsbyImageData}
@@ -77,7 +78,9 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
                 })
                 .split(' ')[1]
               return (
-                <p key={index}>{`${timeString[0]}${
+                <p key={index} className='performance-tile-time'>{`${
+                  timeString[0]
+                }${
                   timeString[1].split(' ')[0] === '00'
                     ? ''
                     : `:${timeString[1].split(' ')[0]}`
@@ -97,6 +100,14 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
         </Link>
       </div>
       <div className='tile-bottom'>
+        <a
+          href={ticketLink}
+          target='_blank'
+          rel='noreferrer'
+          className='secondary-button rounded'
+        >
+          {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}
+        </a>
         <AddToCalendarButton
           name={title}
           startDate={new Date(times[0].startTime).toLocaleString('en-CA', {
@@ -115,18 +126,15 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
             hour12: false,
           })}
           location={locationText}
-          options={'Google'}
+          options={['Google', 'Apple', 'iCal', 'Outlook.com']}
+          listStyle='overlay'
           buttonStyle='text'
-          styleLight="--btn-background: #fff; --btn-text: #000; --font: 'Helvetica Neue', sans-serif; --btn-underline: none"
+          timeZone='EST'
+          hideCheckmark
+          hideBranding
+          inline
+          styleLight="--btn-background: #fff; --btn-text: #000; --font: 'Helvetica Neue', sans-serif; --btn-underline: none --btn-shadow: none; --btn-border: none;"
         ></AddToCalendarButton>
-        <a
-          href={ticketLink}
-          target='_blank'
-          rel='noreferrer'
-          className='secondary-button rounded'
-        >
-          {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}
-        </a>
       </div>
     </div>
   )

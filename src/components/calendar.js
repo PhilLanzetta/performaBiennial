@@ -31,36 +31,38 @@ const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
 
   return (
     <div className='calendar-week'>
-      {filteredDates.map((date, index) => {
-        const day = new Date(date).toLocaleDateString('en-us', {
-          month: 'short',
-          day: '2-digit',
+      {filteredDates.map((date) =>
+        performanceData.map((performance) => {
+          if (
+            performance.performanceDates?.filter(
+              (performanceDate) =>
+                new Date(performanceDate.startTime).toLocaleDateString(
+                  'en-us',
+                  {
+                    month: 'short',
+                    day: '2-digit',
+                  }
+                ) ===
+                new Date(date).toLocaleDateString('en-us', {
+                  month: 'short',
+                  day: '2-digit',
+                })
+            ).length > 0
+          ) {
+            return (
+              <PerformanceTile
+                key={performance.id}
+                performanceTile={performance}
+                handleCategoryFilter={handleCategoryFilter}
+                day={new Date(date).toLocaleDateString('en-us', {
+                  month: 'short',
+                  day: '2-digit',
+                })}
+              ></PerformanceTile>
+            )
+          } else return null
         })
-        return (
-          <div key={index} className='day-column'>
-            <h2>{day}</h2>
-            {performanceData.map((performance) => {
-              const includesDate = performance.performanceDates?.filter(
-                (performanceDate) =>
-                  new Date(performanceDate.startTime).toLocaleDateString(
-                    'en-us',
-                    { month: 'short', day: '2-digit' }
-                  ) === day
-              )
-              if (includesDate?.length) {
-                return (
-                  <PerformanceTile
-                    performanceTile={performance}
-                    key={performance.id}
-                    day={day}
-                    handleCategoryFilter={handleCategoryFilter}
-                  ></PerformanceTile>
-                )
-              } else return null
-            })}
-          </div>
-        )
-      })}
+      )}
     </div>
   )
 }
