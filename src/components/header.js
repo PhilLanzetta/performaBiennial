@@ -179,14 +179,12 @@ const Header = ({ location, handleCategoryFilter }) => {
         <Link to='/supporters' onClick={() => setIsOpen(false)}>
           Biennial Supporters
         </Link>
-        <a
-          href='https://performa-arts.org/attend-a-gala'
-          target='_blank'
-          rel='noreferrer'
+        <Link
+          to='/performa-2023-opening-night-gala'
           onClick={() => setIsOpen(false)}
         >
           Opening Night Gala
-        </a>
+        </Link>
         <Link to='/about' onClick={() => setIsOpen(false)}>
           About Performa
         </Link>

@@ -56,7 +56,7 @@ const About = ({ data }) => {
             )
           } else return null
         })}
-        <div className='max-width'>
+        <div className='max-width' id="team">
           <h2>Performa Team</h2>
           <div className='member-grid'>
             {staff.map((teamMember) => (
