@@ -42,11 +42,14 @@ const Artists = ({ data }) => {
             }`}
             className='artist-item'
           >
-            <GatsbyImage
-              image={artist.artistImage?.image.gatsbyImageData}
-              alt={artist.artistImage?.image.description}
-              className='artist-item-image'
-            ></GatsbyImage>
+            <div className='performance-image-container'>
+              <div className='overlay'></div>
+              <GatsbyImage
+                image={artist.artistImage?.image.gatsbyImageData}
+                alt={artist.artistImage?.image.description}
+                className='artist-item-image'
+              ></GatsbyImage>
+            </div>
             <p className='artist-item-name'>{artist.name}</p>
             {artist.performance && (
               <p className='artist-item-title'>

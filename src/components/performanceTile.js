@@ -80,10 +80,14 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
     <div className='performance-tile'>
       <h2>{day}</h2>
       <Link to={`/${slug}`}>
-        <GatsbyImage
-          image={tileImage.gatsbyImageData}
-          alt={tileImage.description}
-        ></GatsbyImage>
+        <div className='performance-image-container'>
+          <div className='overlay'></div>
+          <GatsbyImage
+            image={tileImage.gatsbyImageData}
+            alt={tileImage.description}
+            className='performance-tile-image'
+          ></GatsbyImage>
+        </div>
         <div className='tile-artist-container'>
           {artists.map((artist, index) => {
             return <p key={index}>{artist.name}</p>
@@ -91,9 +95,9 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
         </div>
         <p className='tile-title'>{title}</p>
       </Link>
-      {category && (
+      {category === 'Performa Commission' && (
         <button
-          className='primary-button'
+          className='primary-button tertiary-font'
           onClick={() => handleCategoryFilter(category)}
         >
           {category}
@@ -104,7 +108,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           href={locationMapLink}
           target='_blank'
           rel='noreferrer'
-          className='tile-location'
+          className='tile-location tertiary-font'
         >
           {locationText}
         </a>
@@ -114,7 +118,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           rel='noreferrer'
           className='tile-time-price'
         >
-          <div className='tile-time-price-item'>
+          <div className='tile-time-price-item tertiary-font'>
             {times.map((time, index) => {
               const timeString = new Date(time.startTime)
                 .toLocaleTimeString('en-us', {
@@ -129,9 +133,10 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
                 })
                 .split(' ')[1]
               return (
-                <p key={index} className='performance-tile-time'>{`${
-                  timeString[0]
-                }${
+                <p
+                  key={index}
+                  className='performance-tile-time tertiary-font'
+                >{`${timeString[0]}${
                   timeString[1].split(' ')[0] === '00'
                     ? ''
                     : `:${timeString[1].split(' ')[0]}`
@@ -139,7 +144,9 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
               )
             })}
           </div>
-          <div className='tile-time-price-item'>{ticketPrice}</div>
+          <div className='tile-time-price-item tertiary-font'>
+            {ticketPrice}
+          </div>
         </a>
         <Link to={`/${slug}`}>
           <div
@@ -150,6 +157,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           ></div>
         </Link>
       </div>
+
       <div className='tile-bottom'>
         <a
           href={ticketLink}
@@ -157,7 +165,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           rel='noreferrer'
           className='secondary-button rounded'
         >
-          {ticketPrice !== 'Free' ? 'Buy Tickets' : 'RSVP'}
+          {ticketPrice?.toLowerCase().includes('free') ? 'RSVP' : 'Buy Tickets'}
         </a>
         <div className='calendar-btn'>
           <AddToCalendarButton
@@ -186,7 +194,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
             hideBranding
             hideBackground
             inline
-            size="3"
+            size='3'
             styleLight={calendarStyle}
           ></AddToCalendarButton>
         </div>
