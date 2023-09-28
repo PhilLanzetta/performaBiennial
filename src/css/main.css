@@ -147,6 +147,10 @@ a:hover .overlay,
   transition: all 600ms;
 }
 
+.performance-tile .performance-tile-image {
+  transition: all 600ms;
+}
+
 a:hover .artist-item-image,
 .performance-tile:hover .performance-tile-image {
   filter: grayscale(100%);
