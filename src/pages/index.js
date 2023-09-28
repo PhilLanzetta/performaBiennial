@@ -212,6 +212,32 @@ const IndexPage = ({ data, location }) => {
               </button>
               <button
                 className={`filter-button ${
+                  category.includes('Finnish Pavilion')
+                    ? 'filter-button-active'
+                    : ''
+                }`}
+                onClick={() =>
+                  handleFilterClick('category', 'Finnish Pavilion')
+                }
+              >
+                {mobile ? 'FINNISH PAVILION' : 'FINNISH PAVILION'}
+              </button>
+              <button
+                className={`filter-button ${
+                  category.includes('Protest & Performance')
+                    ? 'filter-button-active'
+                    : ''
+                }`}
+                onClick={() =>
+                  handleFilterClick('category', 'Protest & Performance')
+                }
+              >
+                {mobile
+                  ? 'PROTEST & PERFORMANCE'
+                  : 'PROTEST & PERFORMANCE: A WAY OF LIFE'}
+              </button>
+              <button
+                className={`filter-button ${
                   category.includes('Broadcast') ? 'filter-button-active' : ''
                 }`}
                 onClick={() => handleFilterClick('category', 'Broadcast')}
