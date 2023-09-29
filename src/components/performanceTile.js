@@ -1,6 +1,6 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import { AddToCalendarButton } from 'add-to-calendar-button-react'
 
 const calendarStyle = `--base-font-size-l: 8px;
@@ -98,7 +98,10 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
       {category === 'Performa Commission' && (
         <button
           className='primary-button tertiary-font'
-          onClick={() => handleCategoryFilter(category)}
+          onClick={() => {
+            handleCategoryFilter(category)
+            navigate('/#calendar')
+          }}
         >
           {category}
         </button>
