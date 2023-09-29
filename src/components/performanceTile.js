@@ -63,7 +63,6 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
     locationText,
     ticketPrice,
     performanceDates,
-    ticketLink,
     category,
     artists,
     locationMapLink,
@@ -76,6 +75,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
         day: '2-digit',
       }) === day
   )
+
   return (
     <div className='performance-tile'>
       <h2>{day}</h2>
@@ -116,7 +116,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           {locationText}
         </a>
         <a
-          href={ticketLink}
+          href={times[0].ticketUrl}
           target='_blank'
           rel='noreferrer'
           className='tile-time-price'
@@ -163,7 +163,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
 
       <div className='tile-bottom'>
         <a
-          href={ticketLink}
+          href={times[0].ticketUrl}
           target='_blank'
           rel='noreferrer'
           className='secondary-button rounded'

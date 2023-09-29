@@ -318,6 +318,7 @@ export const query = graphql`
         performanceDates {
           startTime
           endTime
+          ticketUrl
         }
         ticketLink
       }
