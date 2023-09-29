@@ -35,7 +35,7 @@ const Supporters = ({ data }) => {
       >
         Supporters
       </h1>
-      <div className='flex-page-container'>
+      <div className='flex-page-container support-page'>
         {content.map((item) => {
           if (item.imageModule) {
             return (

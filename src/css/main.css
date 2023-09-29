@@ -1488,3 +1488,32 @@ MODULE CONTENT
 .team-bio {
   margin: var(--spacing-sm) 0;
 }
+
+.support-page .module-image-container {
+  padding-top: 0;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.support-page .lead-supporter-logo {
+  width: 20%;
+  margin: 0 10px;
+}
+
+.support-page .program-supporter-logo {
+  width: 15%;
+  margin: 0 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .support-page .lead-supporter-logo {
+    width: 40%;
+    margin-bottom: 3vw;
+  }
+
+  .support-page .program-supporter-logo {
+    width: 20%;
+    margin: 0 10px;
+    margin-bottom: 3vw;
+  }
+}

@@ -20,18 +20,47 @@ const ImageModule = ({ content }) => {
           <figcaption>{content.images[0].caption}</figcaption>
         </div>
       ) : (
-        content.images.map((image, index) => (
-          <div key={index} className='two-col-image'>
-            <figure>
-              <GatsbyImage
-                image={image.image.gatsbyImageData}
-                alt={image.image.description}
-                className='image'
-              ></GatsbyImage>
-            </figure>
-            <figcaption>{image.caption}</figcaption>
-          </div>
-        ))
+        content.images.map((image, index) => {
+          if (image.caption === 'Lead Supporter') {
+            return (
+              <div key={index} className='lead-supporter-logo'>
+                <figure>
+                  <GatsbyImage
+                    image={image.image.gatsbyImageData}
+                    alt={image.image.description}
+                    className='image'
+                  ></GatsbyImage>
+                </figure>
+                <figcaption>{image.caption}</figcaption>
+              </div>
+            )
+          } else if (image.caption === 'Program Supporter') {
+            return (
+              <div key={index} className='program-supporter-logo'>
+                <figure>
+                  <GatsbyImage
+                    image={image.image.gatsbyImageData}
+                    alt={image.image.description}
+                    className='image'
+                  ></GatsbyImage>
+                </figure>
+                <figcaption>{image.caption}</figcaption>
+              </div>
+            )
+          } else
+            return (
+              <div key={index} className='two-col-image'>
+                <figure>
+                  <GatsbyImage
+                    image={image.image.gatsbyImageData}
+                    alt={image.image.description}
+                    className='image'
+                  ></GatsbyImage>
+                </figure>
+                <figcaption>{image.caption}</figcaption>
+              </div>
+            )
+        })
       )}
     </div>
   )
