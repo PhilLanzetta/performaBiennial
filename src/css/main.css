@@ -437,7 +437,10 @@ Header
 }
 
 .header-logo-link {
+  display: flex;
+  justify-content: center;
   height: 75%;
+  width: 100%;
 }
 
 .header-logo {
@@ -752,6 +755,10 @@ Footer
   .footer-links-container {
     width: 50%;
     margin-bottom: var(--spacing-lg);
+  }
+
+  .footer-links-container button {
+    text-align: left;
   }
 
   .footer-credits {
