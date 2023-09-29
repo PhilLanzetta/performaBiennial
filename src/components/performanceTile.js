@@ -76,6 +76,8 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
       }) === day
   )
 
+  const isStandardTime = new Date(`2023-${day}`) > new Date('2023-11-04')
+
   return (
     <div className='performance-tile'>
       <h2>{day}</h2>
@@ -124,6 +126,16 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           <div className='tile-time-price-item tertiary-font'>
             {times.map((time, index) => {
               const timeString = new Date(time.startTime)
+              const estTime = new Date(
+                timeString.setHours(timeString.getHours() + 1)
+              )
+                .toLocaleTimeString('en-us', {
+                  hour: 'numeric',
+                  minute: 'numeric',
+                })
+                .split(':')
+
+              const edtTime = timeString
                 .toLocaleTimeString('en-us', {
                   hour: 'numeric',
                   minute: 'numeric',
@@ -139,10 +151,10 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
                 <p
                   key={index}
                   className='performance-tile-time tertiary-font'
-                >{`${timeString[0]}${
-                  timeString[1].split(' ')[0] === '00'
+                >{`${isStandardTime ? estTime[0] : edtTime[0]}${
+                  estTime[1].split(' ')[0] === '00'
                     ? ''
-                    : `:${timeString[1].split(' ')[0]}`
+                    : `:${estTime[1].split(' ')[0]}`
                 }${timeOfDay.toLowerCase()}`}</p>
               )
             })}
@@ -192,7 +204,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
             options={['Google', 'Apple', 'iCal', 'Outlook.com']}
             listStyle='overlay'
             buttonStyle='round'
-            timeZone='EST'
+            timeZone='America/New_York'
             hideCheckmark
             hideBranding
             hideBackground

@@ -17,7 +17,7 @@ const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
     )
     .reduce((a, b) => a.concat(b), [])
     .filter(onlyUnique)
-  console.log(performanceDates)
+  
   const filteredDates = dates.filter((date) =>
     performanceDates.includes(
       new Date(date).toLocaleDateString('en-us', {
@@ -26,8 +26,6 @@ const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
       })
     )
   )
-
-  console.log(filteredDates)
 
   return (
     <div className='calendar-week'>
