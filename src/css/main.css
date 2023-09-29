@@ -807,6 +807,18 @@ Performance Page
   font-size: calc(1rem + 0.35vw);
 }
 
+.hero-artist-container h2 {
+  display: inline;
+}
+
+.hero-artist-container h2::after {
+  content: ', ';
+}
+
+.hero-artist-container h2:last-of-type:after {
+  content: '';
+}
+
 .performance-ticket-grid {
   display: flex;
   flex-direction: column;
@@ -1129,6 +1141,18 @@ HOME
   font-family: var(--secondary-font);
   font-size: calc(1rem + 0.5vw);
   font-weight: 600;
+}
+
+.tile-artist-container p {
+  display: inline;
+}
+
+.tile-artist-container p::after {
+  content: ', ';
+}
+
+.tile-artist-container p:last-of-type:after {
+  content: '';
 }
 
 .tile-title {
