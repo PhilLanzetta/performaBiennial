@@ -320,7 +320,6 @@ export const query = graphql`
           endTime
           ticketUrl
         }
-        ticketLink
       }
     }
     contentfulHomePage {

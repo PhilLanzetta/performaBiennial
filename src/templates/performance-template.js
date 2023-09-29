@@ -312,7 +312,6 @@ export const query = graphql`
         }
       }
       title
-      ticketLink
       ticketPrice
       locationMapLink
       locationText
