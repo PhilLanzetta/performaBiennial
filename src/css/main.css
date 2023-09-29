@@ -1394,7 +1394,6 @@ MODULE CONTENT
   margin-top: var(--spacing-sm);
   color: var(--accent-color);
   font-weight: 600;
-  transform: scaleY(1.5) translateY(10%);
 }
 
 .artist-item-title {
