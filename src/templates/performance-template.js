@@ -296,11 +296,6 @@ export const query = graphql`
           html
         }
       }
-      specialThanks {
-        childMarkdownRemark {
-          html
-        }
-      }
       supporterLogos {
         id
         gatsbyImageData
@@ -340,16 +335,6 @@ export const query = graphql`
               gatsbyImageData
             }
           }
-        }
-        ... on ContentfulVideoModule {
-          videoModule: id
-          coverImage {
-            description
-            gatsbyImageData
-          }
-          margin
-          videoCaption
-          videoLink
         }
       }
     }
