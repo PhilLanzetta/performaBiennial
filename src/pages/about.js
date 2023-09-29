@@ -94,16 +94,6 @@ export const query = graphql`
             }
           }
         }
-        ... on ContentfulVideoModule {
-          videoModule: id
-          videoLink
-          margin
-          videoCaption
-          coverImage {
-            description
-            gatsbyImageData
-          }
-        }
       }
     }
     contentfulAboutPageTeamListing {
