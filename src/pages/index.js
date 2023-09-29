@@ -326,6 +326,7 @@ export const query = graphql`
     contentfulHomePage {
       carouselImages {
         caption
+        imageIsLight
         image {
           gatsbyImageData
           description

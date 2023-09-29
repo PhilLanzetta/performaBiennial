@@ -42,7 +42,11 @@ const Performance = ({ data }) => {
           alt={heroImage.image.description}
           className='image'
         ></GatsbyImage>
-        <div className='performance-hero-text'>
+        <div
+          className={`performance-hero-text ${
+            heroImage.imageIsLight ? 'dark-text' : 'light-text'
+          }`}
+        >
           <div className='hero-artist-container'>
             {artists.map((artist) => (
               <h2 key={artist.id} className='hero-artist'>
@@ -241,6 +245,7 @@ export const query = graphql`
   query getSinglePerformance($slug: String) {
     contentfulPerformance(slug: { eq: $slug }) {
       heroImage {
+        imageIsLight
         caption
         image {
           description

@@ -792,12 +792,20 @@ Performance Page
   left: 3vw;
   bottom: 3vw;
   width: 60%;
+}
+
+.light-text,
+.light-text h2 {
   color: #fff;
+}
+
+.dark-text,
+.dark-text h2 {
+  color: #000;
 }
 
 .performance-hero-text h2 {
   font-family: var(--primary-font);
-  color: #fff;
   font-size: calc(1rem + 3vw);
 }
 
@@ -973,7 +981,6 @@ HOME
   position: absolute;
   left: 3vw;
   bottom: 3vw;
-  color: #fff;
   z-index: 100;
 }
 
