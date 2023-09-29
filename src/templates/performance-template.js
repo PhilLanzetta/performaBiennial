@@ -69,10 +69,8 @@ const Performance = ({ data }) => {
               <h3>Schedule</h3>
               <div className='performance-ticket-grid'>
                 <div className='performance-ticket-header'>
-                  <div>Date & Time</div>
-                  <div>
-                    Tickets {ticketPrice} <BsArrowRight></BsArrowRight>
-                  </div>
+                  <div className='left-column'>Date & Time</div>
+                  <div className='right-column'>{ticketPrice}</div>
                 </div>
                 {performanceDates?.map((date) => (
                   <a
@@ -82,11 +80,12 @@ const Performance = ({ data }) => {
                     rel='noreferrer'
                     className='performance-date-row'
                   >
-                    <p>{date.title}</p>
-                    <p>
+                    <p className='left-column'>{date.title}</p>
+                    <p className='right-column'>
                       {ticketPrice?.toLowerCase().includes('free')
                         ? 'RSVP'
                         : 'Buy Tickets'}
+                      <BsArrowRight></BsArrowRight>
                     </p>
                   </a>
                 ))}
