@@ -55,7 +55,7 @@ const TheHub = ({ data }) => {
           } else return null
         })}
         <div className='flex-container center'>
-          <Link to='/#calendar' className='secondary-button center rounded'>
+          <Link to='/#calendar' className='secondary-button center'>
             Full Calendar
           </Link>
         </div>

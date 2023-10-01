@@ -167,7 +167,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           href={times[0].ticketUrl}
           target='_blank'
           rel='noreferrer'
-          className='secondary-button rounded'
+          className='secondary-button'
         >
           {ticketPrice?.toLowerCase().includes('free') ? 'RSVP' : 'Buy Tickets'}
         </a>

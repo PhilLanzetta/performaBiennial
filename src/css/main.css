@@ -229,10 +229,6 @@ h2 {
   align-items: center;
 }
 
-.rounded {
-  border-radius: 8px;
-}
-
 .lofty {
   line-height: 1.35;
 }
@@ -325,7 +321,7 @@ button {
 
 .header .marquee-item {
   color: var(--background-color);
-  margin: 0 8vw;
+  margin: 0 30px;
   font-family: var(--tertiary-font);
   font-size: clamp(8px, 50%, 24px);
 }
@@ -347,7 +343,7 @@ Header
   left: 3vw;
   font-family: var(--tertiary-font);
   z-index: 1000;
-  width: clamp(350px, 94vw, 655px);
+  width: clamp(350px, 94vw, 675px);
 }
 
 .hamburger-container {
@@ -461,7 +457,7 @@ Header
 
 .header-logo-container {
   transition: all 600ms;
-  min-width: 100px;
+  min-width: 120px;
 }
 
 .header-logo-container:hover {
