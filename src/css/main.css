@@ -323,7 +323,7 @@ button {
   color: var(--background-color);
   margin: 0 30px;
   font-family: var(--tertiary-font);
-  font-size: clamp(8px, 50%, 24px);
+  font-size: clamp(8px, 65%, 24px);
 }
 
 .header {
