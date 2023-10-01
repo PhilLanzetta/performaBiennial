@@ -461,6 +461,7 @@ Header
 
 .header-logo-container {
   transition: all 600ms;
+  min-width: 100px;
 }
 
 .header-logo-container:hover {
@@ -1110,6 +1111,10 @@ HOME
 
 .home-hub-locations > div {
   width: 33%;
+}
+
+.home-hub-locations p {
+  margin-bottom: var(--spacing-md);
 }
 
 .home-hub-location-item {
