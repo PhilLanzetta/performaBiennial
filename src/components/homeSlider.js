@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Slider from 'react-slick'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import logo from '../images/LogoSVG.svg'
 
 function NextArrow(props) {
   const { onClick } = props
@@ -97,7 +96,6 @@ const HomeSlider = ({ images }) => {
 
   return (
     <div className='home-slider-container'>
-      <img src={logo} alt='logo' className='slider-logo'></img>
       <Slider {...settings} className='home-slider'>
         {randomizeImages?.map((image, index) => (
           <div className='home-slide-container' key={index}>

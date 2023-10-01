@@ -1,24 +1,38 @@
 import React from 'react'
 import Ticker from './ticker'
-import BangBlue from '../images/BANG_BLUE.png'
-import PerformaLogo from '../images/performa_banner.png'
 import { Link, navigate } from 'gatsby'
 import MailForm from './mailForm'
+import { StaticImage } from 'gatsby-plugin-image'
+import useWindowSize from '../utils/useWindowSize'
 
 const Footer = ({ location, handleCategoryFilter }) => {
+  const { width } = useWindowSize()
+  const mobile = width < 601
   return (
     <div className='footer-container'>
-      <Ticker text='Tickets Available Now!' big></Ticker>
+      <Ticker text='Tickets Available Now!' inverse></Ticker>
       <div className='footer-row'>
-        <div className='footer-bang-container'>
-          <img src={BangBlue} className='footer-bang-blue' alt=''></img>
-        </div>
+        {mobile ? (
+          <StaticImage
+            src='../images/Performa_Logo_Mobile.png'
+            alt=''
+            className='footer-bang-blue'
+          ></StaticImage>
+        ) : (
+          <StaticImage
+            src='../images/BANG_BLUE.png'
+            className='footer-bang-blue'
+            alt=''
+          ></StaticImage>
+        )}
+      </div>
+      <div className='footer-row'>
         <div className='footer-top-item'>
           <p>
             Join Performa’s mailing list to stay up to date on the latest news
             and upcoming events.
           </p>
-          <div className='email-input-container'>
+          <div className='email-input-form-container'>
             <MailForm></MailForm>
           </div>
         </div>
@@ -122,8 +136,17 @@ const Footer = ({ location, handleCategoryFilter }) => {
         >
           Website designed and developed by Pacific
         </a>
-        <a href='https://performa-arts.org/' target='_blank' rel='noreferrer'>
-          <img src={PerformaLogo} alt='' className='footer-logo'></img>
+        <a
+          href='https://performa-arts.org/'
+          target='_blank'
+          rel='noreferrer'
+          className='footer-logo-container'
+        >
+          <StaticImage
+            src='../images/performa_banner.png'
+            alt=''
+            className='footer-logo'
+          ></StaticImage>
         </a>
       </div>
     </div>

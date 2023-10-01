@@ -94,7 +94,7 @@ const IndexPage = ({ data, location }) => {
       <HomeSlider images={carouselImages}></HomeSlider>
       <Ticker text='Tickets Available Now!' big></Ticker>
       <div className='home-hub-container'>
-        <h2 className='home-hub'>About the Hub</h2>
+        <h2 className='home-hub'>Visit the Hub</h2>
         <div className='page-container'>
           <div
             className='home-hub-description'
@@ -121,20 +121,23 @@ const IndexPage = ({ data, location }) => {
                 }}
               ></div>
             </div>
+            <div>
+              <h2>Learn More</h2>
+              <div className='home-hub-location-item'>
+                <p>
+                  For more information about events and programming at The Hub,
+                  visit{' '}
+                  <Link to='/the-hub' className='underline'>
+                    The Hub
+                  </Link>{' '}
+                  page.
+                </p>
+              </div>
+            </div>
           </div>
-          <p className='home-hub-more'>
-            For more information about events and programming at The Hub, visit{' '}
-            <Link to='/the-hub' className='underline'>
-              The Hub
-            </Link>{' '}
-            page.
-          </p>
-          <p className='home-hub-more'>
-            Open to the public from November 2 – 19, 2023
-          </p>
         </div>
       </div>
-      <Ticker text={tickerText} big></Ticker>
+      <Ticker textArray={tickerText} big></Ticker>
       <div className='calendar-container' id='calendar'>
         <h2 className='calendar-title'>Event Calendar</h2>
         <div className='page-container'>
@@ -206,9 +209,7 @@ const IndexPage = ({ data, location }) => {
                   )
                 }
               >
-                {mobile
-                  ? 'FREE EVENTS'
-                  : 'PERFORMA HUB FREE PUBLIC EVENTS'}
+                {mobile ? 'FREE EVENTS' : 'PERFORMA HUB FREE PUBLIC EVENTS'}
               </button>
               <button
                 className={`filter-button ${
