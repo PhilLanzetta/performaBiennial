@@ -329,6 +329,8 @@ button {
 .header {
   padding: var(--spacing-xs);
   padding-bottom: calc(var(--spacing-xs) + 4px);
+  border: 2px solid #000;
+  border-top: none;
 }
 
 /*
@@ -453,11 +455,11 @@ Header
   justify-content: center;
   padding: 0 var(--spacing-sm);
   flex-grow: 1;
+  white-space: nowrap;
 }
 
 .header-logo-container {
   transition: all 600ms;
-  min-width: 120px;
 }
 
 .header-logo-container:hover {
@@ -466,6 +468,7 @@ Header
 }
 
 .header-logo-container svg {
+  min-width: 120px;
   transition: all 600ms;
 }
 
@@ -539,7 +542,7 @@ Header
   transition: all 600ms;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .header-main {
     height: 30px;
     width: 94vw;
@@ -576,6 +579,11 @@ Header
 
   .secondary-menu a,
   .header-button {
+    border: 1px solid #000;
+    border-top: none;
+  }
+
+  .header {
     border: 1px solid #000;
     border-top: none;
   }
