@@ -294,7 +294,7 @@ const IndexPage = ({ data, location }) => {
 
 export const query = graphql`
   query {
-    allContentfulPerformance {
+    allContentfulPerformance(sort: { performanceDates: { startTime: ASC } }) {
       nodes {
         id
         slug
