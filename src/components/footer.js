@@ -92,7 +92,7 @@ const Footer = ({ location, handleCategoryFilter }) => {
           <div className='footer-links-container'>
             <a href='mailto:email@performa.org'>Support</a>
             <a href='mailto:email@performa.org'>Contact</a>
-            <a href='mailto:email@performa.org'>Press</a>
+            <a href='mailto:performa@culturalcounsel.com'>Press</a>
           </div>
         </div>
         <div className='footer-bottom-item'>
