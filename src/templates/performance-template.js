@@ -73,21 +73,29 @@ const Performance = ({ data }) => {
                   <div className='right-column'>{ticketPrice}</div>
                 </div>
                 {performanceDates?.map((date) => (
-                  <a
-                    key={date.id}
-                    href={date.ticketUrl}
-                    target='_blank'
-                    rel='noreferrer'
-                    className='performance-date-row'
-                  >
-                    <p className='left-column'>{date.title}</p>
-                    <p className='right-column'>
-                      {ticketPrice?.toLowerCase().includes('free')
-                        ? 'RSVP'
-                        : 'Buy Tickets'}
-                      <BsArrowRight></BsArrowRight>
-                    </p>
-                  </a>
+                  <>
+                    {date.ticketUrl ? (
+                      <a
+                        key={date.id}
+                        href={date.ticketUrl}
+                        target='_blank'
+                        rel='noreferrer'
+                        className='performance-date-row'
+                      >
+                        <p className='left-column'>{date.title}</p>
+                        <p className='right-column'>
+                          {ticketPrice?.toLowerCase().includes('free')
+                            ? 'RSVP'
+                            : 'Buy Tickets'}
+                          <BsArrowRight></BsArrowRight>
+                        </p>
+                      </a>
+                    ) : (
+                      <div className='performance-date-row'>
+                        <p className='full-column'>{date.title}</p>
+                      </div>
+                    )}
+                  </>
                 ))}
               </div>
             </div>

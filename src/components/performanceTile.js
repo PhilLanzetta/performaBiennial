@@ -163,14 +163,18 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
       </div>
 
       <div className='tile-bottom'>
-        <a
-          href={times[0].ticketUrl}
-          target='_blank'
-          rel='noreferrer'
-          className='secondary-button'
-        >
-          {ticketPrice?.toLowerCase().includes('free') ? 'RSVP' : 'Buy Tickets'}
-        </a>
+        {times[0].ticketUrl && (
+          <a
+            href={times[0].ticketUrl}
+            target='_blank'
+            rel='noreferrer'
+            className='secondary-button'
+          >
+            {ticketPrice?.toLowerCase().includes('free')
+              ? 'RSVP'
+              : 'Buy Tickets'}
+          </a>
+        )}
         <div className='calendar-btn'>
           <AddToCalendarButton
             name={title}

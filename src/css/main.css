@@ -910,6 +910,10 @@ Performance Page
   width: 60%;
 }
 
+.performance-date-row > p.full-column {
+  width: 100%;
+}
+
 .performance-date-row > p.right-column {
   width: 40%;
   gap: var(--spacing-xs);
