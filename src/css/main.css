@@ -959,7 +959,7 @@ Performance Page
 
 .supporter-logo-container {
   display: flex;
-  justify-content: space-between;
+  gap: var(--spacing-sm);
   align-items: center;
   flex-wrap: wrap;
   margin-top: var(--spacing-md);
@@ -967,7 +967,7 @@ Performance Page
 }
 
 .supporter-logo {
-  width: 20%;
+  width: calc(20% - var(--spacing-sm));
   height: fit-content;
 }
 
@@ -1628,5 +1628,17 @@ MODULE CONTENT
     width: 20%;
     margin: 0 10px;
     margin-bottom: 3vw;
+  }
+
+  .member-grid {
+    width: 100%;
+  }
+
+  .team-name {
+    width: 40%;
+  }
+
+  .team-position {
+    width: 60%;
   }
 }
