@@ -90,8 +90,14 @@ const Footer = ({ location, handleCategoryFilter }) => {
         <div className='footer-bottom-item'>
           <h4>Get In Touch</h4>
           <div className='footer-links-container'>
-            <a href='mailto:email@performa.org'>Support</a>
-            <a href='mailto:email@performa.org'>Contact</a>
+            <a
+              href='https://performa-arts.org/donations'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Support
+            </a>
+            <a href='mailto:info@performa-arts.org'>Contact</a>
             <a href='mailto:performa@culturalcounsel.com'>Press</a>
           </div>
         </div>
