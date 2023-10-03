@@ -106,6 +106,17 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
           {category}
         </button>
       )}
+      {category === 'Performa Institute Free Public Event' && (
+        <button
+          className='tertiary-button tertiary-font'
+          onClick={() => {
+            handleCategoryFilter(category)
+            navigate('/#calendar')
+          }}
+        >
+          PERFORMA HUB EVENT
+        </button>
+      )}
       <div>
         <a
           href={locationMapLink}

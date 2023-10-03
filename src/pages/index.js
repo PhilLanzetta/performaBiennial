@@ -209,7 +209,7 @@ const IndexPage = ({ data, location }) => {
                   )
                 }
               >
-                {mobile ? 'FREE EVENTS' : 'PERFORMA HUB FREE PUBLIC EVENTS'}
+                {mobile ? 'HUB EVENTS' : 'PERFORMA HUB EVENTS'}
               </button>
               <button
                 className={`filter-button ${

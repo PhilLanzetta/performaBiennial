@@ -135,11 +135,13 @@ const Performance = ({ data }) => {
             {!mobile && (
               <div>
                 {artists.map((artist) => (
-                  <GatsbyImage
-                    key={artist.id}
-                    image={artist.artistImage?.image.gatsbyImageData}
-                    alt={artist.artistImage?.description}
-                  ></GatsbyImage>
+                  <div key={artist.id} className='artist-image-container'>
+                    <GatsbyImage
+                      image={artist.artistImage?.image.gatsbyImageData}
+                      alt={artist.artistImage?.description}
+                    ></GatsbyImage>
+                    <figcaption>{artist.artistImage?.caption}</figcaption>
+                  </div>
                 ))}
               </div>
             )}
@@ -174,10 +176,13 @@ const Performance = ({ data }) => {
             {artists.map((artist) => (
               <div key={artist.id}>
                 {mobile && artist.artistImage && (
-                  <GatsbyImage
-                    image={artist.artistImage.image.gatsbyImageData}
-                    alt={artist.artistImage.description}
-                  ></GatsbyImage>
+                  <div className='artist-image-container'>
+                    <GatsbyImage
+                      image={artist.artistImage.image.gatsbyImageData}
+                      alt={artist.artistImage.description}
+                    ></GatsbyImage>
+                    <figcaption>{artist.artistImage.caption}</figcaption>
+                  </div>
                 )}
                 <TextField
                   title={`About ${artist.name}`}

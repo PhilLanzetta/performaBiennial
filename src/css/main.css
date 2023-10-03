@@ -187,7 +187,8 @@ h2 {
   font-family: var(--primary-font);
 }
 
-.primary-button {
+.primary-button,
+.tertiary-button {
   display: inline-block;
   text-transform: uppercase;
   color: var(--accent-color);
@@ -196,6 +197,11 @@ h2 {
   border-radius: 8px;
   padding: var(--spacing-xs) var(--spacing-sm);
   margin-bottom: var(--spacing-md);
+}
+
+.tertiary-button {
+  background: var(--plain-color);
+  border: 1px solid var(--accent-color);
 }
 
 .tertiary-font {
@@ -260,7 +266,7 @@ button {
 .page-heading {
   text-transform: uppercase;
   font-family: var(--primary-font);
-  margin-top: 6vw;
+  margin-top: 8vw;
   text-align: center;
   padding: var(--spacing-lg) 0;
   position: relative;
@@ -543,6 +549,10 @@ Header
 }
 
 @media screen and (max-width: 700px) {
+  .page-heading {
+    margin-top: 12vw;
+  }
+
   .header-main {
     height: 30px;
     width: 94vw;
@@ -1362,7 +1372,7 @@ MODULE CONTENT
 }
 
 .module-image-container figcaption,
-.module-video figcaption {
+.module-video figcaption, .artist-image-container figcaption {
   margin-bottom: var(--spacing-sm);
   padding-top: var(--spacing-xs);
   font-size: 80%;
