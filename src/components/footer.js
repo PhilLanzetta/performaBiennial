@@ -91,7 +91,7 @@ const Footer = ({ location, handleCategoryFilter }) => {
           <h4>Get In Touch</h4>
           <div className='footer-links-container'>
             <a
-              href='https://performa-arts.org/donations'
+              href='https://secure.givelively.org/donate/performa-inc/performa-commissioning-fund'
               target='_blank'
               rel='noreferrer'
             >
