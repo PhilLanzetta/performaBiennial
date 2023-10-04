@@ -5,6 +5,7 @@ import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
 import TeamMember from '../components/teamMember'
+import ModuleSlider from '../components/moduleSlider'
 
 const About = ({ data }) => {
   const content = data.contentfulFlexPage.content
@@ -40,9 +41,21 @@ const About = ({ data }) => {
       <div className='flex-page-container extra-top-margin'>
         {content.map((item) => {
           if (item.imageModule) {
-            return (
-              <ImageModule key={item.imageModule} content={item}></ImageModule>
-            )
+            if (item.isACarousel) {
+              return (
+                <ModuleSlider
+                  key={item.imageModule}
+                  content={item}
+                ></ModuleSlider>
+              )
+            } else {
+              return (
+                <ImageModule
+                  key={item.imageModule}
+                  content={item}
+                ></ImageModule>
+              )
+            }
           } else if (item.videoModule) {
             return (
               <VideoModule key={item.videoModule} content={item}></VideoModule>
@@ -56,7 +69,7 @@ const About = ({ data }) => {
             )
           } else return null
         })}
-        <div className='max-width' id="team">
+        <div className='max-width' id='team'>
           <h2>Performa Team</h2>
           <div className='member-grid'>
             {staff.map((teamMember) => (
@@ -85,6 +98,7 @@ export const query = graphql`
         }
         ... on ContentfulImageModule {
           imageModule: id
+          isACarousel
           margin
           images {
             caption

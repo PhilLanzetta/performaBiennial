@@ -1372,7 +1372,8 @@ MODULE CONTENT
 }
 
 .module-image-container figcaption,
-.module-video figcaption, .artist-image-container figcaption {
+.module-video figcaption,
+.artist-image-container figcaption {
   margin-bottom: var(--spacing-sm);
   padding-top: var(--spacing-xs);
   font-size: 80%;
@@ -1651,4 +1652,32 @@ MODULE CONTENT
   .team-position {
     width: 60%;
   }
+}
+
+.module-slider-container {
+  width: 100%;
+  position: relative;
+}
+
+.module-slide-container {
+  position: relative;
+  width: 100%;
+}
+
+.module-slider-container-in-text {
+  position: relative;
+  width: clamp(200px, 96vw, 1000px);
+  margin: 0 auto;
+}
+
+.module-slide-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.home-slider-text-module {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  z-index: 100;
 }

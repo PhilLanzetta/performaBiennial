@@ -1,16 +1,20 @@
-import React from "react"
-import ImageModule from "./imageModule"
-import VideoModule from "./videoModule"
+import React from 'react'
+import ImageModule from './imageModule'
+import VideoModule from './videoModule'
+import HomeSlider from './homeSlider'
 
 const ModuleContent = ({ moduleContent }) => {
-
   return (
-    <div className="module-content-container">
-      {moduleContent.map(item => {
+    <div className='module-content-container'>
+      {moduleContent.map((item) => {
         if (item.imageModule) {
-          return (
-            <ImageModule key={item.imageModule} content={item}></ImageModule>
-          )
+          if (item.isACarousel) {
+            return <HomeSlider></HomeSlider>
+          } else {
+            return (
+              <ImageModule key={item.imageModule} content={item}></ImageModule>
+            )
+          }
         } else if (item.videoModule) {
           return (
             <VideoModule key={item.videoModule} content={item}></VideoModule>

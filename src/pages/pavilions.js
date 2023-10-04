@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
+import ModuleSlider from '../components/moduleSlider'
 
 const Pavilions = ({ data }) => {
   const content = data.contentfulFlexPage.content
@@ -38,9 +39,21 @@ const Pavilions = ({ data }) => {
       <div className='flex-page-container'>
         {content.map((item) => {
           if (item.imageModule) {
-            return (
-              <ImageModule key={item.imageModule} content={item}></ImageModule>
-            )
+            if (item.isACarousel) {
+              return (
+                <ModuleSlider
+                  key={item.imageModule}
+                  content={item}
+                ></ModuleSlider>
+              )
+            } else {
+              return (
+                <ImageModule
+                  key={item.imageModule}
+                  content={item}
+                ></ImageModule>
+              )
+            }
           } else if (item.videoModule) {
             return (
               <VideoModule key={item.videoModule} content={item}></VideoModule>
@@ -75,6 +88,7 @@ export const query = graphql`
         }
         ... on ContentfulImageModule {
           imageModule: id
+          isACarousel
           margin
           images {
             caption
