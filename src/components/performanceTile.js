@@ -136,6 +136,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
             {times.map((time, index) => {
               const timeString = new Date(time.startTime)
                 .toLocaleTimeString('en-us', {
+                  timeZone: 'America/New_York',
                   hour: 'numeric',
                   minute: 'numeric',
                 })
@@ -143,6 +144,7 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
 
               const timeOfDay = new Date(time.startTime)
                 .toLocaleTimeString('en-us', {
+                  timeZone: 'America/New_York',
                   hour: 'numeric',
                   minute: 'numeric',
                 })
