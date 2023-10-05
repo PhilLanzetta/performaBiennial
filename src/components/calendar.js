@@ -6,6 +6,8 @@ const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
     return array.indexOf(value) === index
   }
 
+  console.log(dates)
+
   const performanceDates = performanceData
     .map((performance) =>
       performance.performanceDates?.map((perfDate) =>
@@ -17,7 +19,7 @@ const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
     )
     .reduce((a, b) => a.concat(b), [])
     .filter(onlyUnique)
-  
+
   const filteredDates = dates.filter((date) =>
     performanceDates.includes(
       new Date(date).toLocaleDateString('en-us', {
