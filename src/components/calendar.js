@@ -2,48 +2,20 @@ import React from 'react'
 import PerformanceTile from './performanceTile'
 
 const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
-  function onlyUnique(value, index, array) {
-    return array.indexOf(value) === index
-  }
-
-  console.log(dates)
-
-  const performanceDates = performanceData
-    .map((performance) =>
-      performance.performanceDates?.map((perfDate) =>
-        new Date(perfDate.startTime).toLocaleDateString('en-us', {
-          month: 'short',
-          day: '2-digit',
-        })
-      )
-    )
-    .reduce((a, b) => a.concat(b), [])
-    .filter(onlyUnique)
-
-  const filteredDates = dates.filter((date) =>
-    performanceDates.includes(
-      new Date(date).toLocaleDateString('en-us', {
-        month: 'short',
-        day: '2-digit',
-      })
-    )
-  )
-
   return (
     <div className='calendar-week'>
-      {filteredDates.map((date) =>
+      {dates.map((date) =>
         performanceData.map((performance) => {
           if (
             performance.performanceDates?.filter(
               (performanceDate) =>
-                new Date(performanceDate.startTime).toLocaleDateString(
-                  'en-us',
-                  {
-                    month: 'short',
-                    day: '2-digit',
-                  }
-                ) ===
-                new Date(date).toLocaleDateString('en-us', {
+                new Date(performanceDate.startTime).toLocaleString('en-us', {
+                  timeZone: 'America/New_York',
+                  month: 'short',
+                  day: '2-digit',
+                }) ===
+                new Date(date).toLocaleString('en-us', {
+                  timeZone: 'GMT',
                   month: 'short',
                   day: '2-digit',
                 })
@@ -55,6 +27,7 @@ const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
                 performanceTile={performance}
                 handleCategoryFilter={handleCategoryFilter}
                 day={new Date(date).toLocaleDateString('en-us', {
+                  timeZone: 'GMT',
                   month: 'short',
                   day: '2-digit',
                 })}

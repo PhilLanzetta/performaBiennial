@@ -68,9 +68,12 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
     locationMapLink,
   } = performanceTile
 
+  console.log(day)
+
   const times = performanceDates.filter(
     (performanceDate) =>
       new Date(performanceDate.startTime).toLocaleDateString('en-us', {
+        timeZone: 'America/New_York',
         month: 'short',
         day: '2-digit',
       }) === day

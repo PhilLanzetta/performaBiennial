@@ -252,8 +252,12 @@ const IndexPage = ({ data, location }) => {
               <h2 className='week-heading'>Week 1: November 01-07</h2>
               <Calendar
                 dates={getDaysArray(
-                  new Date('2023-11-02'),
-                  new Date('2023-11-09')
+                  new Date('2023-11-01 EST').toLocaleString('en-us', {
+                    timeZone: 'America/New_York',
+                  }),
+                  new Date('2023-11-08 EST').toLocaleString('en-us', {
+                    timeZone: 'America/New_York',
+                  })
                 )}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
@@ -265,8 +269,12 @@ const IndexPage = ({ data, location }) => {
               <h2 className='week-heading'>Week 2: November 08-14</h2>
               <Calendar
                 dates={getDaysArray(
-                  new Date('2023-11-09'),
-                  new Date('2023-11-15')
+                  new Date('2023-11-08 EST').toLocaleString('en-us', {
+                    timeZone: 'America/New_York',
+                  }),
+                  new Date('2023-11-14 EST').toLocaleString('en-us', {
+                    timeZone: 'America/New_York',
+                  })
                 )}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
@@ -278,8 +286,12 @@ const IndexPage = ({ data, location }) => {
               <h2 className='week-heading'>Week 3: November 15-19</h2>
               <Calendar
                 dates={getDaysArray(
-                  new Date('2023-11-16'),
-                  new Date('2023-11-20')
+                  new Date('2023-11-15 EST').toLocaleString('en-us', {
+                    timeZone: 'America/New_York',
+                  }),
+                  new Date('2023-11-19 EST').toLocaleString('en-us', {
+                    timeZone: 'America/New_York',
+                  })
                 )}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
