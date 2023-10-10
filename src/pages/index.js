@@ -25,17 +25,6 @@ const IndexPage = ({ data, location }) => {
     return array.indexOf(value) === index
   }
 
-  const getDaysArray = (start, end) => {
-    for (
-      var arr = [], dt = new Date(start);
-      dt <= new Date(end);
-      dt.setDate(dt.getDate() + 1)
-    ) {
-      arr.push(new Date(dt))
-    }
-    return arr
-  }
-
   const handleCategoryFilter = (input) => {
     if (category.includes(input)) {
       setCategory(category.filter((item) => item !== input))
@@ -251,14 +240,15 @@ const IndexPage = ({ data, location }) => {
             <div className='calendar-week-container'>
               <h2 className='week-heading'>Week 1: November 01-07</h2>
               <Calendar
-                dates={getDaysArray(
-                  new Date('2023-11-01 EST').toLocaleString('en-us', {
-                    timeZone: 'America/New_York',
-                  }),
-                  new Date('2023-11-08 EST').toLocaleString('en-us', {
-                    timeZone: 'America/New_York',
-                  })
-                )}
+                dates={[
+                  '2023-11-01 EST',
+                  '2023-11-02 EST',
+                  '2023-11-03 EST',
+                  '2023-11-04 EST',
+                  '2023-11-05 EST',
+                  '2023-11-06 EST',
+                  '2023-11-07 EST',
+                ]}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
               ></Calendar>
@@ -268,14 +258,15 @@ const IndexPage = ({ data, location }) => {
             <div className='calendar-week-container'>
               <h2 className='week-heading'>Week 2: November 08-14</h2>
               <Calendar
-                dates={getDaysArray(
-                  new Date('2023-11-08 EST').toLocaleString('en-us', {
-                    timeZone: 'America/New_York',
-                  }),
-                  new Date('2023-11-14 EST').toLocaleString('en-us', {
-                    timeZone: 'America/New_York',
-                  })
-                )}
+                dates={[
+                  '2023-11-08 EST',
+                  '2023-11-08 EST',
+                  '2023-11-10 EST',
+                  '2023-11-11 EST',
+                  '2023-11-12 EST',
+                  '2023-11-13 EST',
+                  '2023-11-14 EST',
+                ]}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
               ></Calendar>
@@ -285,14 +276,13 @@ const IndexPage = ({ data, location }) => {
             <div className='calendar-week-container'>
               <h2 className='week-heading'>Week 3: November 15-19</h2>
               <Calendar
-                dates={getDaysArray(
-                  new Date('2023-11-15 EST').toLocaleString('en-us', {
-                    timeZone: 'America/New_York',
-                  }),
-                  new Date('2023-11-19 EST').toLocaleString('en-us', {
-                    timeZone: 'America/New_York',
-                  })
-                )}
+                dates={[
+                  '2023-11-15 EST',
+                  '2023-11-16 EST',
+                  '2023-11-17 EST',
+                  '2023-11-18 EST',
+                  '2023-11-19 EST',
+                ]}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
               ></Calendar>
