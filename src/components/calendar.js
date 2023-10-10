@@ -15,7 +15,7 @@ const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
                   day: '2-digit',
                 }) ===
                 new Date(date).toLocaleString('en-us', {
-                  timeZone: 'GMT',
+                  timeZone: 'America/New_York',
                   month: 'short',
                   day: '2-digit',
                 })
