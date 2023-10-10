@@ -260,7 +260,7 @@ const IndexPage = ({ data, location }) => {
               <Calendar
                 dates={[
                   '2023-11-08 EST',
-                  '2023-11-08 EST',
+                  '2023-11-09 EST',
                   '2023-11-10 EST',
                   '2023-11-11 EST',
                   '2023-11-12 EST',
