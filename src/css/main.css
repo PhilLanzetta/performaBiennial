@@ -1630,7 +1630,7 @@ MODULE CONTENT
 .support-page .module-image-container {
   padding-top: 0;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 }
 
 .support-page .lead-supporter-logo {
@@ -1651,7 +1651,7 @@ MODULE CONTENT
 
   .support-page .program-supporter-logo {
     width: 20%;
-    margin: 0 10px;
+    margin: 0 5px;
     margin-bottom: 3vw;
   }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-const ImageModule = ({ content }) => {
+const ImageModule = ({ content, support }) => {
   return (
     <div
       className={`module-image-container ${
@@ -9,16 +9,29 @@ const ImageModule = ({ content }) => {
       }`}
     >
       {content.images.length === 1 ? (
-        <div className='single-col-image'>
-          <figure key={content.imageModule}>
-            <GatsbyImage
-              image={content.images[0].image.gatsbyImageData}
-              alt={content.images[0].description}
-              className='image'
-            ></GatsbyImage>
-          </figure>
-          <figcaption>{content.images[0].caption}</figcaption>
-        </div>
+        support ? (
+          <div className='program-supporter-logo'>
+            <figure key={content.imageModule}>
+              <GatsbyImage
+                image={content.images[0].image.gatsbyImageData}
+                alt={content.images[0].description}
+                className='image'
+              ></GatsbyImage>
+            </figure>
+            <figcaption>{content.images[0].caption}</figcaption>
+          </div>
+        ) : (
+          <div className='single-col-image'>
+            <figure key={content.imageModule}>
+              <GatsbyImage
+                image={content.images[0].image.gatsbyImageData}
+                alt={content.images[0].description}
+                className='image'
+              ></GatsbyImage>
+            </figure>
+            <figcaption>{content.images[0].caption}</figcaption>
+          </div>
+        )
       ) : (
         content.images.map((image, index) => {
           if (image.caption === 'Lead Supporter') {
@@ -34,7 +47,7 @@ const ImageModule = ({ content }) => {
                 <figcaption>{image.caption}</figcaption>
               </div>
             )
-          } else if (image.caption === 'Program Supporter') {
+          } else if (support) {
             return (
               <div key={index} className='program-supporter-logo'>
                 <figure>

@@ -51,6 +51,7 @@ const Supporters = ({ data }) => {
                 <ImageModule
                   key={item.imageModule}
                   content={item}
+                  support
                 ></ImageModule>
               )
             }
