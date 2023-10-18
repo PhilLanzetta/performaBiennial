@@ -6,11 +6,11 @@ import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
 import ModuleSlider from '../components/moduleSlider'
 
-const Pavilions = ({ data }) => {
+const Press = ({ data }) => {
   const content = data.contentfulFlexPage.content
-  const initialScale = 2
-  const initialTransform = 35
-  const [transform, setTransform] = useState({ scaleY: 2, translateY: 35 })
+  const initialScale = 1.8
+  const initialTransform = 30
+  const [transform, setTransform] = useState({ scaleY: 1.8, translateY: 30 })
 
   const handleScroll = () => {
     if (window.scrollY < 185) {
@@ -29,12 +29,12 @@ const Pavilions = ({ data }) => {
   return (
     <Layout>
       <h1
-        className='page-heading pavilion-header'
+        className='page-heading press-header'
         style={{
           transform: `scaleY(${transform.scaleY}) translateY(${transform.translateY}%)`,
         }}
       >
-        Pavilions
+        Press
       </h1>
       <div className='flex-page-container'>
         {content.map((item) => {
@@ -74,7 +74,7 @@ const Pavilions = ({ data }) => {
 
 export const query = graphql`
   query {
-    contentfulFlexPage(slug: { eq: "pavilions" }) {
+    contentfulFlexPage(slug: { eq: "press" }) {
       content {
         ... on ContentfulHeadlineWithText {
           headlineText: id
@@ -104,4 +104,4 @@ export const query = graphql`
   }
 `
 
-export default Pavilions
+export default Press

@@ -4,12 +4,12 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 const ImageModule = ({ content, support }) => {
   return (
     <div
-      className={`module-image-container ${
-        content.margin === 'In-text' ? 'max-width' : ''
-      }`}
+      className={`${
+        content.isALogos ? 'logo-image-container' : 'module-image-container'
+      } ${content.margin === 'In-text' ? 'max-width' : ''}`}
     >
       {content.images.length === 1 ? (
-        support ? (
+        content.isALogos ? (
           <div className='program-supporter-logo'>
             <figure key={content.imageModule}>
               <GatsbyImage
@@ -47,7 +47,7 @@ const ImageModule = ({ content, support }) => {
                 <figcaption>{image.caption}</figcaption>
               </div>
             )
-          } else if (support) {
+          } else if (content.isALogos) {
             return (
               <div key={index} className='program-supporter-logo'>
                 <figure>

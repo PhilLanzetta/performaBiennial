@@ -89,6 +89,7 @@ export const query = graphql`
         ... on ContentfulImageModule {
           imageModule: id
           isACarousel
+          isALogos
           margin
           images {
             caption

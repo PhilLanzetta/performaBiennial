@@ -51,7 +51,6 @@ const Supporters = ({ data }) => {
                 <ImageModule
                   key={item.imageModule}
                   content={item}
-                  support
                 ></ImageModule>
               )
             }
@@ -90,6 +89,7 @@ export const query = graphql`
         ... on ContentfulImageModule {
           imageModule: id
           isACarousel
+          isALogos
           margin
           images {
             caption

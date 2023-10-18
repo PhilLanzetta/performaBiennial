@@ -1372,6 +1372,7 @@ MODULE CONTENT
 }
 
 .module-image-container figcaption,
+.logo-image-container figcaption,
 .module-video figcaption,
 .artist-image-container figcaption {
   margin-bottom: var(--spacing-sm);
@@ -1468,6 +1469,11 @@ MODULE CONTENT
   transform-origin: bottom;
 }
 
+.press-header {
+  font-size: clamp(20px, 19vw, 475px);
+  transform-origin: bottom;
+}
+
 .pavilion-header {
   font-size: clamp(20px, 16.5vw, 412px);
   transform-origin: bottom;
@@ -1543,6 +1549,10 @@ MODULE CONTENT
 
 .headline-text-container p {
   margin-bottom: var(--spacing-md);
+}
+
+.headline-text-container a {
+  text-decoration: underline;
 }
 
 .extra-top-margin {
@@ -1627,29 +1637,29 @@ MODULE CONTENT
   margin: var(--spacing-sm) 0;
 }
 
-.support-page .module-image-container {
+.logo-image-container {
   padding-top: 0;
   align-items: center;
   justify-content: flex-start;
 }
 
-.support-page .lead-supporter-logo {
+.lead-supporter-logo {
   width: 20%;
   margin: 0 10px;
 }
 
-.support-page .program-supporter-logo {
+.program-supporter-logo {
   width: 15%;
   margin: 0 10px;
 }
 
 @media screen and (max-width: 600px) {
-  .support-page .lead-supporter-logo {
+  .lead-supporter-logo {
     width: 40%;
     margin-bottom: 3vw;
   }
 
-  .support-page .program-supporter-logo {
+  .program-supporter-logo {
     width: 20%;
     margin: 0 5px;
     margin-bottom: 3vw;
