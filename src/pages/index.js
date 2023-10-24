@@ -124,7 +124,7 @@ const IndexPage = ({ data, location }) => {
               navigate('#calendar')
             }}
           >
-            Performance and Protest
+            Protest and Performance
           </button>
         </div>
       </div>

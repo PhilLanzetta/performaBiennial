@@ -151,6 +151,9 @@ const Header = ({ location, handleCategoryFilter }) => {
         <Link to='/the-hub' onClick={() => setIsOpen(false)}>
           The Hub
         </Link>
+        <Link to='/protest-and-performance' onClick={() => setIsOpen(false)}>
+          Protest & Performance
+        </Link>
         <Link to='/pavilions' onClick={() => setIsOpen(false)}>
           Finnish Pavilion
         </Link>
@@ -162,6 +165,9 @@ const Header = ({ location, handleCategoryFilter }) => {
           onClick={() => setIsOpen(false)}
         >
           Opening Night Gala
+        </Link>
+        <Link to='/press' onClick={() => setIsOpen(false)}>
+          Press
         </Link>
         <Link to='/about' onClick={() => setIsOpen(false)}>
           About Performa
