@@ -2,6 +2,7 @@ import { Link, navigate } from 'gatsby'
 import React, { useState, useEffect } from 'react'
 import Loader from './loader'
 import Ticker from './ticker'
+import useWindowSize from '../utils/useWindowSize'
 
 const apiKey = process.env.GATSBY_WEATHER_KEY
 const cityName = 'new york'
@@ -18,6 +19,8 @@ const Header = ({ location, handleCategoryFilter }) => {
       second: '2-digit',
     })
   )
+
+  const { width } = useWindowSize()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -82,16 +85,18 @@ const Header = ({ location, handleCategoryFilter }) => {
           </Link>
         </div>
         <div>{new Date().toLocaleDateString('en-us').replace(/\//g, '.')}</div>
-        <div>{nyTime}</div>
-        <div>
-          {loading ? (
-            <Loader></Loader>
-          ) : (
-            <span className='header-weather'>
-              {convertToFahrenheit(weatherData.main.temp)}&deg;
-            </span>
-          )}
-        </div>
+        {width > 300 && <div>{nyTime}</div>}
+        {width > 300 && (
+          <div>
+            {loading ? (
+              <Loader></Loader>
+            ) : (
+              <span className='header-weather'>
+                {convertToFahrenheit(weatherData.main.temp)}&deg;
+              </span>
+            )}
+          </div>
+        )}
         <div className='hamburger-container'>
           <button
             id='navIcon'

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import { BsArrowRight } from 'react-icons/bs'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
-import HomeSlider from '../components/homeSlider'
 import Ticker from '../components/ticker'
 import Calendar from '../components/calendar'
 import useWindowSize from '../utils/useWindowSize'
@@ -15,8 +14,6 @@ const IndexPage = ({ data, location }) => {
   const [performanceData, setPerformanceData] = useState(allEvents)
   const [firstClick, setFirstClick] = useState(true)
   const [category, setCategory] = useState(location.state?.category || [])
-  const carouselImages = data.contentfulHomePage.carouselImages
-  const hubContent = data.contentfulHomePage
   const tickerText = data.contentfulHomePage.tickerText
   const { width } = useWindowSize()
   const mobile = width < 781
@@ -80,50 +77,55 @@ const IndexPage = ({ data, location }) => {
   }, [category])
   return (
     <Layout location={location} handleCategoryFilter={setCategory}>
-      <HomeSlider images={carouselImages}></HomeSlider>
-      <Ticker text='Tickets Available Now!' big></Ticker>
-      <div className='home-hub-container'>
-        <h2 className='home-hub'>Visit the Hub</h2>
-        <div className='page-container'>
-          <div
-            className='home-hub-description'
-            dangerouslySetInnerHTML={{
-              __html: hubContent.theHubDescription.childMarkdownRemark.html,
+      <div className='home-hero-container'>
+        <div className='home-hero-text-container'>
+          <p className='home-hero-text'>
+            THE PERFORMA BIENNIAL 2023 presents three weeks of live performance,
+            featuring Performa Commissions, projects, and events at venues
+            across the city of New York and at{' '}
+            <Link to='/the-hub'>The Performa Hub,</Link> from 1-19 November.
+          </p>
+        </div>
+        <div className='hero-button-container'>
+          <button
+            className='hero-button'
+            onClick={() => {
+              handleFilterClick('category', 'Performa Commission')
+              navigate('#calendar')
             }}
-          ></div>
-          <div className='home-hub-locations'>
-            <div>
-              <h2>Location</h2>
-              <div
-                className='home-hub-location-item'
-                dangerouslySetInnerHTML={{
-                  __html: hubContent.theHubLocations.childMarkdownRemark.html,
-                }}
-              ></div>
-            </div>
-            <div>
-              <h2>Opening Hours</h2>
-              <div
-                className='home-hub-location-item'
-                dangerouslySetInnerHTML={{
-                  __html: hubContent.theHubHours.childMarkdownRemark.html,
-                }}
-              ></div>
-            </div>
-            <div>
-              <h2>Learn More</h2>
-              <div className='home-hub-location-item'>
-                <p>
-                  For more information about events and programming at The Hub,
-                  visit{' '}
-                  <Link to='/the-hub' className='underline'>
-                    The Hub
-                  </Link>{' '}
-                  page.
-                </p>
-              </div>
-            </div>
-          </div>
+          >
+            Performa Commissions
+          </button>
+          <button
+            className='hero-button'
+            onClick={() => {
+              handleFilterClick('category', 'Finnish Pavilion')
+              navigate('#calendar')
+            }}
+          >
+            Finnish Pavilion
+          </button>
+          <button
+            className='hero-button'
+            onClick={() => {
+              handleFilterClick(
+                'category',
+                'Performa Institute Free Public Event'
+              )
+              navigate('#calendar')
+            }}
+          >
+            Performa Hub Events
+          </button>
+          <button
+            className='hero-button'
+            onClick={() => {
+              handleFilterClick('category', 'Protest & Performance')
+              navigate('#calendar')
+            }}
+          >
+            Performance and Protest
+          </button>
         </div>
       </div>
       <Ticker textArray={tickerText} big></Ticker>
@@ -326,29 +328,6 @@ export const query = graphql`
       }
     }
     contentfulHomePage {
-      carouselImages {
-        caption
-        imageIsLight
-        image {
-          gatsbyImageData
-          description
-        }
-      }
-      theHubDescription {
-        childMarkdownRemark {
-          html
-        }
-      }
-      theHubHours {
-        childMarkdownRemark {
-          html
-        }
-      }
-      theHubLocations {
-        childMarkdownRemark {
-          html
-        }
-      }
       tickerText
     }
   }
