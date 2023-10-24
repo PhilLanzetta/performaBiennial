@@ -112,7 +112,11 @@ const Header = ({ location, handleCategoryFilter }) => {
           </button>
         </div>
       </div>
-      <Ticker text={`Tickets Available Now!`} header></Ticker>
+      {location.pathname === '/broadcast/' ? (
+        <div></div>
+      ) : (
+        <Ticker text={`Tickets Available Now!`} header></Ticker>
+      )}
       <div className={`secondary-menu ${isOpen ? 'secondary-show' : ''}`}>
         <Link to='/#calendar' onClick={() => setIsOpen(false)}>
           Calendar
