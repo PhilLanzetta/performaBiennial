@@ -4,7 +4,7 @@ import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Seo from '../components/seo'
 
-const Artists = ({ data }) => {
+const Artists = ({ data, location }) => {
   const artists = data.allContentfulArtist.nodes
   const initialScale = 2.4
   const initialTransform = 40
@@ -25,7 +25,7 @@ const Artists = ({ data }) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout location={location}>
       <h1
         className='page-heading artists-header'
         style={{

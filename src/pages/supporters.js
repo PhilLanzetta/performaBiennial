@@ -7,7 +7,7 @@ import HeadlineTextModule from '../components/headlineTextModule'
 import ModuleSlider from '../components/moduleSlider'
 import Seo from '../components/seo'
 
-const Supporters = ({ data }) => {
+const Supporters = ({ data, location }) => {
   const content = data.contentfulFlexPage.content
   const initialScale = 2.1
   const initialTransform = 35
@@ -28,7 +28,7 @@ const Supporters = ({ data }) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout location={location}>
       <h1
         className='page-heading supporter-header'
         style={{

@@ -9,7 +9,7 @@ import Seo from '../components/seo'
 import useWindowSize from '../utils/useWindowSize'
 import { BsArrowRight } from 'react-icons/bs'
 
-const Performance = ({ data }) => {
+const Performance = ({ data, location }) => {
   const {
     artists,
     category,
@@ -35,7 +35,7 @@ const Performance = ({ data }) => {
   const mobile = width < 701
 
   return (
-    <Layout>
+    <Layout location={location}>
       <div className='performance-hero-container'>
         <GatsbyImage
           image={heroImage.image.gatsbyImageData}

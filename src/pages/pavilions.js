@@ -7,7 +7,7 @@ import HeadlineTextModule from '../components/headlineTextModule'
 import ModuleSlider from '../components/moduleSlider'
 import Seo from '../components/seo'
 
-const Pavilions = ({ data }) => {
+const Pavilions = ({ data, location }) => {
   const content = data.contentfulFlexPage.content
   const initialScale = 2
   const initialTransform = 35
@@ -28,7 +28,7 @@ const Pavilions = ({ data }) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout location={location}>
       <h1
         className='page-heading pavilion-header'
         style={{

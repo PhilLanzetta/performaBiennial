@@ -8,7 +8,7 @@ import TeamMember from '../components/teamMember'
 import ModuleSlider from '../components/moduleSlider'
 import Seo from '../components/seo'
 
-const About = ({ data }) => {
+const About = ({ data, location }) => {
   const content = data.contentfulFlexPage.content
   const staff = data.contentfulAboutPageTeamListing.teamListing
   const initialScale = 4.25
@@ -30,7 +30,7 @@ const About = ({ data }) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout location={location}>
       <h1
         className='page-heading about-header'
         style={{

@@ -7,7 +7,7 @@ import HeadlineTextModule from '../components/headlineTextModule'
 import ModuleSlider from '../components/moduleSlider'
 import Seo from '../components/seo'
 
-const ProtestAndPerformance = ({ data }) => {
+const ProtestAndPerformance = ({ data, location }) => {
   const content = data.contentfulFlexPage.content
   const initialScale = 5.35
   const initialTransform = 53
@@ -28,7 +28,7 @@ const ProtestAndPerformance = ({ data }) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout location={location}>
       <h1
         className='page-heading protest-header'
         style={{

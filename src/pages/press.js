@@ -7,7 +7,7 @@ import HeadlineTextModule from '../components/headlineTextModule'
 import ModuleSlider from '../components/moduleSlider'
 import Seo from '../components/seo'
 
-const Press = ({ data }) => {
+const Press = ({ data, location }) => {
   const content = data.contentfulFlexPage.content
   const initialScale = 1.8
   const initialTransform = 30
@@ -28,7 +28,7 @@ const Press = ({ data }) => {
   }, [])
 
   return (
-    <Layout>
+    <Layout location={location}>
       <h1
         className='page-heading press-header'
         style={{
