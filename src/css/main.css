@@ -1031,12 +1031,12 @@ HOME
 }
 
 .home-hero-text-container {
-  min-height: calc(4vw * 9);
+  min-height: calc(4vw * 8);
 }
 
 .home-hero-text {
   color: var(--accent-color);
-  line-height: 1.25;
+  line-height: 1;
   font-size: 4vw;
   font-weight: 700;
   transform: scaleY(1.5) translateY(4vw);
@@ -1691,6 +1691,9 @@ MODULE CONTENT
 
 .logo-image-container {
   padding-top: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3%;
   align-items: center;
   justify-content: flex-start;
 }
