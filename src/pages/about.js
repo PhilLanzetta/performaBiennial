@@ -6,6 +6,7 @@ import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
 import TeamMember from '../components/teamMember'
 import ModuleSlider from '../components/moduleSlider'
+import Seo from '../components/seo'
 
 const About = ({ data }) => {
   const content = data.contentfulFlexPage.content
@@ -126,5 +127,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title='About' />
 
 export default About

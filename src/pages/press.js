@@ -5,6 +5,7 @@ import ImageModule from '../components/imageModule'
 import VideoModule from '../components/videoModule'
 import HeadlineTextModule from '../components/headlineTextModule'
 import ModuleSlider from '../components/moduleSlider'
+import Seo from '../components/seo'
 
 const Press = ({ data }) => {
   const content = data.contentfulFlexPage.content
@@ -103,5 +104,7 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => <Seo title='Press' />
 
 export default Press
