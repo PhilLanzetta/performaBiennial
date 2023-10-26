@@ -4,6 +4,7 @@ import Footer from './footer'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const Layout = ({ children, location, handleCategoryFilter }) => {
+  const broadcast = location?.pathname === '/broadcast/'
   return (
     <>
       <Header location={location} handleCategoryFilter={handleCategoryFilter} />
@@ -16,7 +17,12 @@ const Layout = ({ children, location, handleCategoryFilter }) => {
           <main className='main'>{children}</main>
         </motion.div>
       </AnimatePresence>
-      <Footer location={location} handleCategoryFilter={handleCategoryFilter} />
+      {!broadcast && (
+        <Footer
+          location={location}
+          handleCategoryFilter={handleCategoryFilter}
+        />
+      )}
     </>
   )
 }
