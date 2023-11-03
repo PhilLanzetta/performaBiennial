@@ -313,6 +313,11 @@ export const query = graphql`
           html
         }
       }
+      specialThanks {
+        childMarkdownRemark {
+          html
+        }
+      }
       supporterLogos {
         id
         gatsbyImageData
