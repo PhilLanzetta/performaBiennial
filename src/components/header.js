@@ -172,6 +172,9 @@ const Header = ({ location, handleCategoryFilter }) => {
         <Link to='/about' onClick={() => setIsOpen(false)}>
           About Performa
         </Link>
+        <Link to='/broadcast' onClick={() => setIsOpen(false)}>
+          Broadcast
+        </Link>
       </div>
     </div>
   )

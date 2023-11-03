@@ -19,6 +19,7 @@ const Broadcast = ({ location, data }) => {
               url={videoLink}
               width={'100%'}
               height={'100%'}
+              controls
               className='broadcast-video-player'
             ></ReactPlayer>
           </div>
