@@ -83,11 +83,13 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
       <Link to={`/${slug}`}>
         <div className='performance-image-container'>
           <div className='overlay'></div>
-          <GatsbyImage
-            image={tileImage.gatsbyImageData}
-            alt={tileImage.description}
-            className='performance-tile-image'
-          ></GatsbyImage>
+          {tileImage && (
+            <GatsbyImage
+              image={tileImage.gatsbyImageData}
+              alt={tileImage.description}
+              className='performance-tile-image'
+            ></GatsbyImage>
+          )}
         </div>
         <div className='tile-artist-container'>
           {artists.map((artist, index) => {
