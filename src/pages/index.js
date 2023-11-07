@@ -10,7 +10,7 @@ import useWindowSize from '../utils/useWindowSize'
 
 const IndexPage = ({ data, location }) => {
   const allEvents = data.allContentfulPerformance.nodes
-  const [weeks, setWeeks] = useState(['1', '2', '3'])
+  const [weeks, setWeeks] = useState(['2', '3'])
   const [performanceData, setPerformanceData] = useState(allEvents)
   const [firstClick, setFirstClick] = useState(true)
   const [category, setCategory] = useState(location.state?.category || [])
