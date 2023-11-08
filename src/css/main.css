@@ -1824,3 +1824,7 @@ MODULE CONTENT
     border-right: 1px solid #000;
   }
 }
+
+.no-broadcast {
+  display: none;
+}

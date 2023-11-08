@@ -54,7 +54,12 @@ const calendarStyle = `--base-font-size-l: 8px;
   --btn-shadow: none; 
   --btn-border: none;`
 
-const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
+const PerformanceTile = ({
+  performanceTile,
+  day,
+  handleCategoryFilter,
+  broadcastFilter,
+}) => {
   const {
     slug,
     tileImage,
@@ -77,153 +82,325 @@ const PerformanceTile = ({ performanceTile, day, handleCategoryFilter }) => {
       }) === day
   )
 
+  const isBroadcast =
+    times.filter((performanceDate) => performanceDate.willBeBroadcast === true)
+      .length > 0
+
+  console.log(broadcastFilter)
   return (
-    <div className='performance-tile'>
-      <h2>{day}</h2>
-      <Link to={`/${slug}`}>
-        <div className='performance-image-container'>
-          <div className='overlay'></div>
-          {tileImage && (
-            <GatsbyImage
-              image={tileImage.gatsbyImageData}
-              alt={tileImage.description}
-              className='performance-tile-image'
-            ></GatsbyImage>
+    <>
+      {broadcastFilter ? (
+        isBroadcast ? (
+          <div className='performance-tile'>
+            <h2>{day}</h2>
+            <Link to={`/${slug}`}>
+              <div className='performance-image-container'>
+                <div className='overlay'></div>
+                {tileImage && (
+                  <GatsbyImage
+                    image={tileImage.gatsbyImageData}
+                    alt={tileImage.description}
+                    className='performance-tile-image'
+                  ></GatsbyImage>
+                )}
+              </div>
+              <div className='tile-artist-container'>
+                {artists.map((artist, index) => {
+                  return <p key={index}>{artist.name}</p>
+                })}
+              </div>
+              <p className='tile-title'>{title}</p>
+            </Link>
+            {category === 'Performa Commission' && (
+              <button
+                className='primary-button tertiary-font'
+                onClick={() => {
+                  handleCategoryFilter(category)
+                  navigate('/#calendar')
+                }}
+              >
+                {category}
+              </button>
+            )}
+            {category === 'Performa Institute Free Public Event' && (
+              <button
+                className='tertiary-button tertiary-font'
+                onClick={() => {
+                  handleCategoryFilter(category)
+                  navigate('/#calendar')
+                }}
+              >
+                PERFORMA HUB EVENT
+              </button>
+            )}
+            <div>
+              <a
+                href={locationMapLink}
+                target='_blank'
+                rel='noreferrer'
+                className='tile-location tertiary-font'
+              >
+                {locationText}
+              </a>
+              <a
+                href={times[0].ticketUrl}
+                target='_blank'
+                rel='noreferrer'
+                className='tile-time-price'
+              >
+                <div className='tile-time-price-item tertiary-font'>
+                  {times.map((time, index) => {
+                    const timeString = new Date(time.startTime)
+                      .toLocaleTimeString('en-us', {
+                        timeZone: 'America/New_York',
+                        hour: 'numeric',
+                        minute: 'numeric',
+                      })
+                      .split(':')
+
+                    const timeOfDay = new Date(time.startTime)
+                      .toLocaleTimeString('en-us', {
+                        timeZone: 'America/New_York',
+                        hour: 'numeric',
+                        minute: 'numeric',
+                      })
+                      .split(' ')[1]
+                    return (
+                      <p
+                        key={index}
+                        className='performance-tile-time tertiary-font'
+                      >{`${timeString[0]}${
+                        timeString[1].split(' ')[0] === '00'
+                          ? ''
+                          : `:${timeString[1].split(' ')[0]}`
+                      }${timeOfDay.toLowerCase()}`}</p>
+                    )
+                  })}
+                </div>
+                <div className='tile-time-price-item tertiary-font'>
+                  {ticketPrice}
+                </div>
+              </a>
+              <Link to={`/${slug}`}>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: performanceHeadline.childMarkdownRemark.html,
+                  }}
+                  className='lofty'
+                ></div>
+              </Link>
+            </div>
+
+            <div className='tile-bottom'>
+              {times[0].ticketUrl && (
+                <a
+                  href={times[0].ticketUrl}
+                  target='_blank'
+                  rel='noreferrer'
+                  className='secondary-button'
+                >
+                  {ticketPrice?.toLowerCase().includes('free')
+                    ? 'RSVP'
+                    : 'Buy Tickets'}
+                </a>
+              )}
+              <div className='calendar-btn'>
+                <AddToCalendarButton
+                  name={title}
+                  startDate={new Date(times[0].startTime).toLocaleString(
+                    'en-CA',
+                    {
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                    }
+                  )}
+                  startTime={new Date(times[0].startTime).toLocaleString(
+                    'en-CA',
+                    {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      hour12: false,
+                    }
+                  )}
+                  endTime={new Date(times[0].endTime).toLocaleString('en-CA', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                  })}
+                  location={locationText}
+                  options={['Google', 'Apple', 'iCal', 'Outlook.com']}
+                  listStyle='overlay'
+                  buttonStyle='round'
+                  timeZone='America/New_York'
+                  hideCheckmark
+                  hideBranding
+                  hideBackground
+                  inline
+                  size='3'
+                  styleLight={calendarStyle}
+                ></AddToCalendarButton>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className='no-broadcast'></div>
+        )
+      ) : (
+        <div className='performance-tile'>
+          <h2>{day}</h2>
+          <Link to={`/${slug}`}>
+            <div className='performance-image-container'>
+              <div className='overlay'></div>
+              {tileImage && (
+                <GatsbyImage
+                  image={tileImage.gatsbyImageData}
+                  alt={tileImage.description}
+                  className='performance-tile-image'
+                ></GatsbyImage>
+              )}
+            </div>
+            <div className='tile-artist-container'>
+              {artists.map((artist, index) => {
+                return <p key={index}>{artist.name}</p>
+              })}
+            </div>
+            <p className='tile-title'>{title}</p>
+          </Link>
+          {category === 'Performa Commission' && (
+            <button
+              className='primary-button tertiary-font'
+              onClick={() => {
+                handleCategoryFilter(category)
+                navigate('/#calendar')
+              }}
+            >
+              {category}
+            </button>
           )}
-        </div>
-        <div className='tile-artist-container'>
-          {artists.map((artist, index) => {
-            return <p key={index}>{artist.name}</p>
-          })}
-        </div>
-        <p className='tile-title'>{title}</p>
-      </Link>
-      {category === 'Performa Commission' && (
-        <button
-          className='primary-button tertiary-font'
-          onClick={() => {
-            handleCategoryFilter(category)
-            navigate('/#calendar')
-          }}
-        >
-          {category}
-        </button>
-      )}
-      {category === 'Performa Institute Free Public Event' && (
-        <button
-          className='tertiary-button tertiary-font'
-          onClick={() => {
-            handleCategoryFilter(category)
-            navigate('/#calendar')
-          }}
-        >
-          PERFORMA HUB EVENT
-        </button>
-      )}
-      <div>
-        <a
-          href={locationMapLink}
-          target='_blank'
-          rel='noreferrer'
-          className='tile-location tertiary-font'
-        >
-          {locationText}
-        </a>
-        <a
-          href={times[0].ticketUrl}
-          target='_blank'
-          rel='noreferrer'
-          className='tile-time-price'
-        >
-          <div className='tile-time-price-item tertiary-font'>
-            {times.map((time, index) => {
-              const timeString = new Date(time.startTime)
-                .toLocaleTimeString('en-us', {
-                  timeZone: 'America/New_York',
-                  hour: 'numeric',
-                  minute: 'numeric',
-                })
-                .split(':')
+          {category === 'Performa Institute Free Public Event' && (
+            <button
+              className='tertiary-button tertiary-font'
+              onClick={() => {
+                handleCategoryFilter(category)
+                navigate('/#calendar')
+              }}
+            >
+              PERFORMA HUB EVENT
+            </button>
+          )}
+          <div>
+            <a
+              href={locationMapLink}
+              target='_blank'
+              rel='noreferrer'
+              className='tile-location tertiary-font'
+            >
+              {locationText}
+            </a>
+            <a
+              href={times[0].ticketUrl}
+              target='_blank'
+              rel='noreferrer'
+              className='tile-time-price'
+            >
+              <div className='tile-time-price-item tertiary-font'>
+                {times.map((time, index) => {
+                  const timeString = new Date(time.startTime)
+                    .toLocaleTimeString('en-us', {
+                      timeZone: 'America/New_York',
+                      hour: 'numeric',
+                      minute: 'numeric',
+                    })
+                    .split(':')
 
-              const timeOfDay = new Date(time.startTime)
-                .toLocaleTimeString('en-us', {
-                  timeZone: 'America/New_York',
-                  hour: 'numeric',
-                  minute: 'numeric',
-                })
-                .split(' ')[1]
-              return (
-                <p
-                  key={index}
-                  className='performance-tile-time tertiary-font'
-                >{`${timeString[0]}${
-                  timeString[1].split(' ')[0] === '00'
-                    ? ''
-                    : `:${timeString[1].split(' ')[0]}`
-                }${timeOfDay.toLowerCase()}`}</p>
-              )
-            })}
+                  const timeOfDay = new Date(time.startTime)
+                    .toLocaleTimeString('en-us', {
+                      timeZone: 'America/New_York',
+                      hour: 'numeric',
+                      minute: 'numeric',
+                    })
+                    .split(' ')[1]
+                  return (
+                    <p
+                      key={index}
+                      className='performance-tile-time tertiary-font'
+                    >{`${timeString[0]}${
+                      timeString[1].split(' ')[0] === '00'
+                        ? ''
+                        : `:${timeString[1].split(' ')[0]}`
+                    }${timeOfDay.toLowerCase()}`}</p>
+                  )
+                })}
+              </div>
+              <div className='tile-time-price-item tertiary-font'>
+                {ticketPrice}
+              </div>
+            </a>
+            <Link to={`/${slug}`}>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: performanceHeadline.childMarkdownRemark.html,
+                }}
+                className='lofty'
+              ></div>
+            </Link>
           </div>
-          <div className='tile-time-price-item tertiary-font'>
-            {ticketPrice}
-          </div>
-        </a>
-        <Link to={`/${slug}`}>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: performanceHeadline.childMarkdownRemark.html,
-            }}
-            className='lofty'
-          ></div>
-        </Link>
-      </div>
 
-      <div className='tile-bottom'>
-        {times[0].ticketUrl && (
-          <a
-            href={times[0].ticketUrl}
-            target='_blank'
-            rel='noreferrer'
-            className='secondary-button'
-          >
-            {ticketPrice?.toLowerCase().includes('free')
-              ? 'RSVP'
-              : 'Buy Tickets'}
-          </a>
-        )}
-        <div className='calendar-btn'>
-          <AddToCalendarButton
-            name={title}
-            startDate={new Date(times[0].startTime).toLocaleString('en-CA', {
-              year: 'numeric',
-              month: '2-digit',
-              day: '2-digit',
-            })}
-            startTime={new Date(times[0].startTime).toLocaleString('en-CA', {
-              hour: '2-digit',
-              minute: '2-digit',
-              hour12: false,
-            })}
-            endTime={new Date(times[0].endTime).toLocaleString('en-CA', {
-              hour: '2-digit',
-              minute: '2-digit',
-              hour12: false,
-            })}
-            location={locationText}
-            options={['Google', 'Apple', 'iCal', 'Outlook.com']}
-            listStyle='overlay'
-            buttonStyle='round'
-            timeZone='America/New_York'
-            hideCheckmark
-            hideBranding
-            hideBackground
-            inline
-            size='3'
-            styleLight={calendarStyle}
-          ></AddToCalendarButton>
+          <div className='tile-bottom'>
+            {times[0].ticketUrl && (
+              <a
+                href={times[0].ticketUrl}
+                target='_blank'
+                rel='noreferrer'
+                className='secondary-button'
+              >
+                {ticketPrice?.toLowerCase().includes('free')
+                  ? 'RSVP'
+                  : 'Buy Tickets'}
+              </a>
+            )}
+            <div className='calendar-btn'>
+              <AddToCalendarButton
+                name={title}
+                startDate={new Date(times[0].startTime).toLocaleString(
+                  'en-CA',
+                  {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                  }
+                )}
+                startTime={new Date(times[0].startTime).toLocaleString(
+                  'en-CA',
+                  {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false,
+                  }
+                )}
+                endTime={new Date(times[0].endTime).toLocaleString('en-CA', {
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: false,
+                })}
+                location={locationText}
+                options={['Google', 'Apple', 'iCal', 'Outlook.com']}
+                listStyle='overlay'
+                buttonStyle='round'
+                timeZone='America/New_York'
+                hideCheckmark
+                hideBranding
+                hideBackground
+                inline
+                size='3'
+                styleLight={calendarStyle}
+              ></AddToCalendarButton>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   )
 }
 

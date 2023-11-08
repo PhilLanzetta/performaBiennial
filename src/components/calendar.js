@@ -1,7 +1,12 @@
 import React from 'react'
 import PerformanceTile from './performanceTile'
 
-const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
+const Calendar = ({
+  dates,
+  performanceData,
+  handleCategoryFilter,
+  broadcastFilter,
+}) => {
   return (
     <div className='calendar-week'>
       {dates.map((date) =>
@@ -34,6 +39,7 @@ const Calendar = ({ dates, performanceData, handleCategoryFilter }) => {
                     day: '2-digit',
                   }
                 )}
+                broadcastFilter={broadcastFilter}
               ></PerformanceTile>
             )
           } else return null

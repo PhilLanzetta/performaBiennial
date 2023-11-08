@@ -14,6 +14,7 @@ const IndexPage = ({ data, location }) => {
   const [performanceData, setPerformanceData] = useState(allEvents)
   const [firstClick, setFirstClick] = useState(true)
   const [category, setCategory] = useState(location.state?.category || [])
+  const [broadcastFilter, setBroadcastFilter] = useState(false)
   const tickerText = data.contentfulHomePage.tickerText
   const { width } = useWindowSize()
   const mobile = width < 781
@@ -61,6 +62,8 @@ const IndexPage = ({ data, location }) => {
       }
     } else if (type === 'category') {
       handleCategoryFilter(value)
+    } else if (type === 'broadcast') {
+      setBroadcastFilter(!broadcastFilter)
     }
   }
 
@@ -75,6 +78,7 @@ const IndexPage = ({ data, location }) => {
     }
     setPerformanceData(result)
   }, [category])
+
   return (
     <Layout location={location} handleCategoryFilter={setCategory}>
       <div className='home-hero-container'>
@@ -230,9 +234,9 @@ const IndexPage = ({ data, location }) => {
               </button>
               <button
                 className={`filter-button ${
-                  category.includes('Broadcast') ? 'filter-button-active' : ''
+                  broadcastFilter ? 'filter-button-active' : ''
                 }`}
-                onClick={() => handleFilterClick('category', 'Broadcast')}
+                onClick={() => handleFilterClick('broadcast', 'Broadcast')}
               >
                 BROADCASTS
               </button>
@@ -253,6 +257,7 @@ const IndexPage = ({ data, location }) => {
                 ]}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
+                broadcastFilter={broadcastFilter}
               ></Calendar>
             </div>
           )}
@@ -271,6 +276,7 @@ const IndexPage = ({ data, location }) => {
                 ]}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
+                broadcastFilter={broadcastFilter}
               ></Calendar>
             </div>
           )}
@@ -287,6 +293,7 @@ const IndexPage = ({ data, location }) => {
                 ]}
                 performanceData={performanceData}
                 handleCategoryFilter={handleCategoryFilter}
+                broadcastFilter={broadcastFilter}
               ></Calendar>
             </div>
           )}
@@ -324,6 +331,7 @@ export const query = graphql`
           startTime
           endTime
           ticketUrl
+          willBeBroadcast
         }
       }
     }
